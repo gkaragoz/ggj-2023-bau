@@ -9,6 +9,8 @@ namespace Animations
 
         #region Editor Settings
 
+        [SerializeField] private SpriteRenderer spriteRenderer;
+
         [Tooltip("Material to switch to during the flash.")]
         [SerializeField] private Material flashMaterial;
 
@@ -20,9 +22,6 @@ namespace Animations
         #endregion
         #region Private Fields
 
-        // The SpriteRenderer that should flash.
-        private SpriteRenderer spriteRenderer;
-        
         // The material that was in use, when the script started.
         private Material originalMaterial;
 
@@ -40,10 +39,6 @@ namespace Animations
 
         void Start()
         {
-            // Get the SpriteRenderer to be used,
-            // alternatively you could set it from the inspector.
-            spriteRenderer = GetComponent<SpriteRenderer>();
-
             // Get the material that the SpriteRenderer uses, 
             // so we can switch back to it after the flash ended.
             originalMaterial = spriteRenderer.material;
