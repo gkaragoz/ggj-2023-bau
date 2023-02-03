@@ -319,4 +319,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84777ac6476bd234fa4ee4270788718b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _simpleFlash: {fileID: 2081643240}
+  BounceScale: {x: 1.5, y: 0.1, z: 0.1}
+  SimpleFlash: {fileID: 2081643240}
