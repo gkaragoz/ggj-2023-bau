@@ -46,7 +46,6 @@ namespace Gameplay
             TimeText = $"{hours:00}:{minutes:00}:{seconds:00}";
             OnTimeChange?.Invoke(PassingSeconds);
             OnTimeChangeAsFormattedString?.Invoke(TimeText);
-            Debug.Log(TimeText);
         }
 
         private void OnEnable()
