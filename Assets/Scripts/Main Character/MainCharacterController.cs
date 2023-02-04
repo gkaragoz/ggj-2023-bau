@@ -35,6 +35,9 @@ namespace Main_Character
             
             if (col.TryGetComponent(out EnemyController enemy))
             {
+                if(enemy.CurrentState != EnemyState.Attack) return; 
+                
+                Debug.LogWarning(enemy.name);
                 _currentHealth = Mathf.Clamp(_currentHealth - enemy.DamageAmount, 0F, health);
 
                 if (_currentHealth == 0)

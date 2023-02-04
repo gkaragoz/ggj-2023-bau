@@ -1,7 +1,6 @@
-using System;
 using System.Collections;
 using Animations;
-using Gameplay;
+using DG.Tweening;
 using Main_Character;
 using UnityEngine;
 using UnityEngine.AI;
@@ -30,15 +29,15 @@ namespace Enemy
         private Transform _target;
         private NavMeshAgent _agent;
         private EnemyAttackAnimation _attackAnimation;
-        private EnemyState _currentState = EnemyState.Walk;
         private bool _canAttack = true;
         private YieldInstruction _attackCooldown;
         private int _health;
         private bool _isAttackable = true;
 
         public int Reward => reward;
-        public float DamageAmount => _currentState == EnemyState.Attack ? damageAmount : damageAmount / 3F;
-        
+        public float DamageAmount => damageAmount;
+        public EnemyState CurrentState { get; private set; } = EnemyState.Walk;
+
         private void Awake()
         {
             _current = transform;
@@ -57,7 +56,7 @@ namespace Enemy
 
         private void Update()
         {
-            switch (_currentState)
+            switch (CurrentState)
             {
                 case EnemyState.Death or EnemyState.Attack:
                     break;
@@ -67,17 +66,17 @@ namespace Enemy
                     {
                         var targetPosition = _target.position;
                         _agent.SetDestination(new Vector3(targetPosition.x, targetPosition.y, 0F));
-                        _currentState = EnemyState.Walk;
+                        CurrentState = EnemyState.Walk;
                     }
 
                     else
                     {
-                        _currentState = EnemyState.Attack;
+                        CurrentState = EnemyState.Attack;
                         _agent.isStopped = true;
                         _attackAnimation.AttackTo(_target.position, () =>
                         {
                             _agent.isStopped = false;
-                            _currentState = EnemyState.Walk;
+                            CurrentState = EnemyState.Walk;
                         });
                         
                         StartCoroutine(AttackCooldown());
@@ -102,15 +101,16 @@ namespace Enemy
         {
             if (_health == 0) return;
             if (_isAttackable == false) return;
-            Debug.LogWarning("take hit");
             _isAttackable = false;
-            
+            DOTween.Kill(transform);
+            CurrentState = EnemyState.Walk;
             _health--;
             
             if (_health == 0)
             {
                 hitAnimation.Clear();;
                 dieAnimation.Die(Destroy);
+                CurrentState = EnemyState.Death;
                 return;
             }
 
