@@ -34,6 +34,7 @@ namespace Enemy
         private bool _canAttack = true;
         private YieldInstruction _attackCooldown;
         private int _health;
+        private bool _isAttackable = true;
 
         public int Reward => reward;
         public float DamageAmount => _currentState == EnemyState.Attack ? damageAmount : damageAmount / 3F;
@@ -52,25 +53,6 @@ namespace Enemy
             var speedAlpha = _agent.speed / speedInterval.y;
             transform.localScale = Vector3.one * Mathf.Lerp(1.6F, 1F, speedAlpha);
             _attackCooldown = new WaitForSeconds(Random.Range(attackCooldown / 2F, attackCooldown));
-        }
-
-        private void OnTriggerEnter2DHandler(Collider2D col)
-        {
-            if (col.TryGetComponent(out CharacterWeaponController playerWeapon))
-            {
-                _health--;
-                
-                if (_health == 0)
-                {
-                    dieAnimation.Die(Destroy);
-                    
-                    // TODO : Send score to ScoreManager
-                    
-                    return;
-                }
-
-                hitAnimation.TakeHit(playerWeapon.transform.position, null, null);
-            }
         }
 
         private void Update()
@@ -116,14 +98,26 @@ namespace Enemy
             _canAttack = true;
         }
 
-        private void OnEnable()
+        public void TakeHit(Vector3 hitPoint)
         {
-            TriggerTransmitter.
-        }
+            if (_health == 0) return;
+            if (_isAttackable == false) return;
+            Debug.LogWarning("take hit");
+            _isAttackable = false;
+            
+            _health--;
+            
+            if (_health == 0)
+            {
+                hitAnimation.Clear();;
+                dieAnimation.Die(Destroy);
+                return;
+            }
 
-        private void OnDisable()
-        {
-            throw new NotImplementedException();
+            hitAnimation.TakeHit(hitPoint, () =>
+            {
+                _isAttackable = true;
+            }, null, true);
         }
     }
 }

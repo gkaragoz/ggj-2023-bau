@@ -30,7 +30,7 @@ namespace Animations
             _originalScale = TargetTransform.localScale;
         }
 
-        public void TakeHit(Vector2 hitPosition, Action onHalfwayCompleted, Action onCompleted)
+        public void TakeHit(Vector2 hitPosition, Action onHalfwayCompleted, Action onCompleted, bool pushBack = false)
         {
             IEnumerator HalfwayCallback()
             {
@@ -44,7 +44,10 @@ namespace Animations
             BounceIt(onCompleted);
             FlashAnimation();
 
-            PushTo(hitPosition);
+            if (pushBack)
+            {
+                PushTo(hitPosition);
+            }
         }
 
         private void BounceIt(Action onCompleted)
@@ -62,8 +65,6 @@ namespace Animations
         
         private void PushTo(Vector2 hitPosition)
         {
-            if (hitPosition != Vector2.zero) return;
-            
             _takeHitTween?.Kill();
             
             Vector2 startPosition = transform.position;
@@ -75,6 +76,13 @@ namespace Animations
 
             _takeHitTween = transform.DOPath(path, FlyDuration, PathType.CatmullRom, PathMode.TopDown2D)
                 .SetEase(FlyEaseType);
+        }
+
+        public void Clear()
+        {
+            _bounceTween?.Kill();
+            _colorTween?.Kill();
+            _takeHitTween?.Kill();
         }
     }
 }

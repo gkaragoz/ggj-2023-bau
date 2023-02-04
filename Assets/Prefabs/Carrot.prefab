@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 2143318976}
   - component: {fileID: 982149743}
   - component: {fileID: 4835859037235111381}
+  - component: {fileID: 4377960750079990358}
   m_Layer: 0
   m_Name: Carrot
   m_TagString: Untagged
@@ -257,15 +258,15 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8351679854119863856}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.4}
+  m_Offset: {x: 0, y: 0.31}
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.31
 --- !u!195 &4835859037235111381
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -288,6 +289,32 @@ NavMeshAgent:
   m_BaseOffset: 2.925739
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 1
+--- !u!61 &4377960750079990358
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8351679854119863856}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.024063036, y: 0.05297859}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.22835252, y: 0.18054911}
+  m_EdgeRadius: 0
 --- !u!1 &8351679854283982939
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using Enemy;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -44,13 +45,24 @@ namespace Main_Character
             _rotationAnimation = weaponChildSocket.DOLocalRotate(data.localRotation, .2F);
         }
 
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.TryGetComponent(out EnemyController enemy))
+            {
+                if (IsSwingAnimationPlaying)
+                {
+                    enemy.TakeHit(transform.position);
+                }
+            }
+        }
+
         public void SwingWeapon()
         {
             weaponAnimator.Play("Swing");
             IsSwingAnimationPlaying = true;
         }
 
-        private void OnCompleteSwingAnimation()
+        public void OnCompleteSwingAnimation()
         {
             IsSwingAnimationPlaying = false;
         }

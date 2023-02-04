@@ -1,6 +1,7 @@
 using System;
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyAttackAnimation : MonoBehaviour
 {
@@ -32,7 +33,9 @@ public class EnemyAttackAnimation : MonoBehaviour
         var path = new Vector3[] { startPosition, peekPosition, endPosition };
 
         _jumpTween = _transform.DOPath(path, FlyDuration, PathType.CatmullRom, PathMode.TopDown2D)
-            .SetEase(FlyEaseType).OnComplete(()=> onComplete?.Invoke());
+            .SetDelay(Random.Range(0.25f, 1f))
+            .SetEase(FlyEaseType)
+            .OnComplete(()=> onComplete?.Invoke());
     }
 
     private void UpdateShadow()
