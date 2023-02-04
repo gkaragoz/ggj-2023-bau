@@ -233,6 +233,7 @@ MonoBehaviour:
   FlyHeight: 1
   FlyDuration: 0.5
   FlyEaseType: 7
+  ShadowSpriteRenderer: {fileID: 8351679854384684658}
 --- !u!210 &2143318976
 SortingGroup:
   m_ObjectHideFlags: 0

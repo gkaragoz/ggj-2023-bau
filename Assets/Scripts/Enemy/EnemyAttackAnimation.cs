@@ -8,8 +8,11 @@ public class EnemyAttackAnimation : MonoBehaviour
     public float FlyDuration = 0.5f;
     public Ease FlyEaseType = Ease.InOutQuad;
 
+    [SerializeField] private SpriteRenderer ShadowSpriteRenderer;
+
     private Transform _transform;
     private Tween _jumpTween;
+    private Tween _shadowTween;
 
     private void Awake()
     {
@@ -18,6 +21,8 @@ public class EnemyAttackAnimation : MonoBehaviour
     
     public void AttackTo(Vector3 targetPosition, Action onComplete = null)
     {
+        UpdateShadow();
+        
         _jumpTween?.Kill();
         
         Vector2 startPosition = _transform.position;
@@ -28,5 +33,16 @@ public class EnemyAttackAnimation : MonoBehaviour
 
         _jumpTween = _transform.DOPath(path, FlyDuration, PathType.CatmullRom, PathMode.TopDown2D)
             .SetEase(FlyEaseType).OnComplete(()=> onComplete?.Invoke());
+    }
+
+    private void UpdateShadow()
+    {
+        _shadowTween?.Kill();
+
+        _shadowTween = ShadowSpriteRenderer.DOFade(0f, FlyDuration * 0.5f)
+            .OnComplete(() =>
+            {
+                _shadowTween = ShadowSpriteRenderer.DOFade(1f, FlyDuration * 0.5f);
+            });
     }
 }
