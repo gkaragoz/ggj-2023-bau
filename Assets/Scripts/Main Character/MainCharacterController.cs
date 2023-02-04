@@ -16,6 +16,8 @@ namespace Main_Character
         [SerializeField] private HealthBar healthBar;
 
         public static Action<float> OnReceiveHit;
+        public static Action OnDeath;
+        
         private Vector3 _refVel = Vector3.zero;
         private float _currentHealth;
         private bool _isDead;
@@ -37,6 +39,7 @@ namespace Main_Character
                 if (_currentHealth == 0)
                 {
                     GameManager.OnComplete?.Invoke();
+                    OnDeath?.Invoke();
                     _isDead = true;
                     return;
                 }
