@@ -16,7 +16,7 @@ namespace Animations
         [SerializeField] private float FlyHeight = 1f;
         [SerializeField] private float FlyDuration = 0.5f;
         [SerializeField] private Ease FlyEaseType = Ease.InOutQuad;
-        [SerializeField] private Vector2 PushVectorMultiplier = Vector3.one;
+        [SerializeField] private float PushBackMultiplier = 1;
         
         // Bounce and flash 
         [SerializeField] private Vector3 BounceScale = Vector3.one * 0.1f;
@@ -31,7 +31,7 @@ namespace Animations
             _originalScale = _transform.localScale;
         }
 
-        public void TakeHit(Vector2 direction, Action onHalfwayCompleted, Action onCompleted)
+        public void TakeHit(Vector2 hitPosition, Action onHalfwayCompleted, Action onCompleted)
         {
             IEnumerator HalfwayCallback()
             {
@@ -49,7 +49,7 @@ namespace Animations
         
             SimpleFlash.Flash();
             
-            PushTo(direction);
+            PushTo(hitPosition);
         }
 
         private void PushTo(Vector2 hitPosition)
@@ -58,7 +58,7 @@ namespace Animations
             
             Vector2 startPosition = _transform.position;
             var direction = (hitPosition - startPosition).normalized;
-            Vector2 endPosition = startPosition - direction * PushVectorMultiplier;
+            Vector2 endPosition = startPosition - direction * PushBackMultiplier;
             Vector2 peekPosition = ((endPosition + startPosition) * 0.5f) + Vector2.up * FlyHeight;
 
             var path = new Vector3[] { startPosition, peekPosition, endPosition };

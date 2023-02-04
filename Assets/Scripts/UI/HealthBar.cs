@@ -31,7 +31,7 @@ namespace UI
             HealthBarDamageIndicatorImage.fillAmount = healthPercentage;
         }
 
-        public void TakeDamage(float currentHealth, float maxHealth)
+        public void TakeDamage(Vector3 hitPoint, float currentHealth, float maxHealth)
         {
             _shakeTween?.Kill();
             ParentRectTransform.localScale = _parentScale;

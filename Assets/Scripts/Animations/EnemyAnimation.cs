@@ -5,19 +5,10 @@ namespace Animations
     public class EnemyAnimation : MonoBehaviour
     {
         [SerializeField] private TakeHitAnimation TakeHitAnimation;
-        [SerializeField] private DieAnimation DieAnimation;
     
         public void TakeHit()
         {
-            TakeHitAnimation.TakeHit(transform.position, () =>
-            {
-                //Die();
-            }, null);
-        }
-
-        public void Die()
-        {
-            DieAnimation.Die(Destroy);
+            TakeHitAnimation.TakeHit(transform.position, null, null);
         }
 
         private void Update()
