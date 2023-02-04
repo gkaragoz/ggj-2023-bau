@@ -569,7 +569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody2d: {fileID: 771270897961618240}
-  speed: 10
+  speed: 8
   characterSpriteSymmetry: {fileID: 771270897961618237}
 --- !u!114 &771270897961618237
 MonoBehaviour:

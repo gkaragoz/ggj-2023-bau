@@ -2,6 +2,7 @@ using System.Collections;
 using Main_Character;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 namespace Enemy
 {
@@ -16,7 +17,8 @@ namespace Enemy
     {
         [SerializeField] private float attackCooldown;
         [SerializeField] private Vector2 speedInterval;
-        
+
+        private Transform _current;
         private Transform _target;
         private NavMeshAgent _agent;
         private EnemyAttackAnimation _attackAnimation;
@@ -26,6 +28,7 @@ namespace Enemy
 
         private void Awake()
         {
+            _current = transform;
             _attackAnimation = GetComponent<EnemyAttackAnimation>();
             _target = MainCharacterController.Instance.transform;
             _agent = GetComponent<NavMeshAgent>();
@@ -33,7 +36,14 @@ namespace Enemy
             _agent.updateUpAxis = false;
             _agent.speed = Random.Range(speedInterval.x, speedInterval.y);
             _agent.acceleration = _agent.speed * 3;
+            var speedAlpha = _agent.speed / speedInterval.y;
+            transform.localScale = Vector3.one * Mathf.Lerp(1.6F, 1F, speedAlpha);
             _attackCooldown = new WaitForSeconds(Random.Range(attackCooldown / 2F, attackCooldown));
+        }
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            Debug.Log(col.name);
         }
 
         private void Update()
@@ -41,7 +51,7 @@ namespace Enemy
             switch (_currentState)
             {
                 case EnemyState.Death or EnemyState.Attack:
-                    return;
+                    break;
                 case EnemyState.Walk:
                 {
                     if (Vector3.Distance(transform.position, _target.position) > _agent.stoppingDistance * 2F || !_canAttack)
@@ -54,18 +64,22 @@ namespace Enemy
                     else
                     {
                         _currentState = EnemyState.Attack;
-                        _agent.enabled = false;
+                        _agent.isStopped = true;
                         _attackAnimation.AttackTo(_target.position, () =>
                         {
-                            _agent.enabled = true;
+                            _agent.isStopped = false;
                             _currentState = EnemyState.Walk;
                         });
                         
                         StartCoroutine(AttackCooldown());
                     }
-                    return;
+                    break;
                 }
             }
+
+            var position = _current.position;
+            position.z = 0;
+            _current.position = position;
         }
 
         private IEnumerator AttackCooldown()
