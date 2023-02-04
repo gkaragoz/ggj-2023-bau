@@ -1,20 +1,16 @@
-using System;
 using Animations;
 using UnityEngine;
 
-namespace DefaultNamespace
+public class SpawnTest : MonoBehaviour
 {
-    public class SpawnTest : MonoBehaviour
-    {
-        public EnemyAnimation EnemyAnimation;
+    public EnemyAnimation EnemyAnimation;
 
-        public void Update()
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                var newObject = Instantiate(EnemyAnimation);
-                newObject.transform.position = transform.position;
-            }
+            var newObject = Instantiate(EnemyAnimation);
+            newObject.transform.position = transform.position;
         }
     }
 }
