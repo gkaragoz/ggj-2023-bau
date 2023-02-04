@@ -95,8 +95,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DieParticles: {fileID: 8351679855915537401}
-  ScaleDownDuration: 0.33
-  SpriteRenderer: {fileID: 8351679854283982938}
+  ScaleUpDuration: 0.5
+  CharacterSpriteRenderer: {fileID: 8351679854283982938}
+  CharacterShadowSpriteRenderer: {fileID: 8351679854384684658}
 --- !u!210 &2143318976
 SortingGroup:
   m_ObjectHideFlags: 0

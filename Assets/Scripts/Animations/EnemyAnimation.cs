@@ -17,7 +17,7 @@ namespace Animations
 
         public void Die()
         {
-            DieAnimation.Die();
+            DieAnimation.Die(Destroy);
         }
 
         private void Update()
