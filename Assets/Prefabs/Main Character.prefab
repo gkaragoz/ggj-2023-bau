@@ -324,6 +324,8 @@ GameObject:
   m_Component:
   - component: {fileID: 771270897767312345}
   - component: {fileID: 765363646}
+  - component: {fileID: 1223881552}
+  - component: {fileID: 1223881553}
   m_Layer: 0
   m_Name: WeaponHolder
   m_TagString: Untagged
@@ -358,6 +360,106 @@ SortingGroup:
   m_SortingLayerID: 1101321149
   m_SortingLayer: 1
   m_SortingOrder: 0
+--- !u!95 &1223881552
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771270897767312346}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b785166662fdb52459c63bc43b1fd744, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &1223881553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771270897767312346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7acb383077f44ce387bbce1a4e400527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponRenderer: {fileID: 771270897677072030}
+  sortingGroup: {fileID: 765363646}
+  weaponAnimator: {fileID: 1223881552}
+  weaponChildSocket: {fileID: 771270897677072031}
+  directionDataset:
+  - title: Right
+    direction: 4
+    sortOrder: 0
+    localPosition: {x: 0.6, y: -0.105, z: 0}
+    localRotation: {x: 0, y: 0, z: 27}
+    flipX: 0
+    flipY: 0
+  - title: DownRight
+    direction: 6
+    sortOrder: 1
+    localPosition: {x: 0.38, y: -0.385, z: 0}
+    localRotation: {x: 0, y: 0, z: 14.95}
+    flipX: 0
+    flipY: 0
+  - title: UpRight
+    direction: 1
+    sortOrder: 0
+    localPosition: {x: 0, y: 0.58, z: 0}
+    localRotation: {x: 0, y: 0, z: 138.175}
+    flipX: 0
+    flipY: 0
+  - title: Up
+    direction: 0
+    sortOrder: 0
+    localPosition: {x: -0.225, y: 0.435, z: 0}
+    localRotation: {x: 0, y: 0, z: 156}
+    flipX: 0
+    flipY: 1
+  - title: UpLeft
+    direction: 2
+    sortOrder: 0
+    localPosition: {x: 0.085, y: 0.635, z: 0}
+    localRotation: {x: 0, y: 180, z: 145.5}
+    flipX: 0
+    flipY: 0
+  - title: Left
+    direction: 3
+    sortOrder: 1
+    localPosition: {x: -0.59, y: -0.165, z: 0}
+    localRotation: {x: 0, y: 180, z: 26.18}
+    flipX: 0
+    flipY: 0
+  - title: DownLeft
+    direction: 7
+    sortOrder: 1
+    localPosition: {x: -0.415, y: -0.35, z: 0}
+    localRotation: {x: 0, y: 180, z: 14}
+    flipX: 0
+    flipY: 0
+  - title: Down
+    direction: 5
+    sortOrder: 1
+    localPosition: {x: 0.48, y: -0.286, z: 0}
+    localRotation: {x: 0, y: 0, z: 26.62}
+    flipX: 0
+    flipY: 0
+  - title: DownRight
+    direction: 6
+    sortOrder: 1
+    localPosition: {x: 0.44, y: -0.33, z: 0}
+    localRotation: {x: 0, y: 0, z: 15.33}
+    flipX: 0
+    flipY: 0
 --- !u!1 &771270897812274053
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,7 +640,6 @@ GameObject:
   - component: {fileID: 771270897961618241}
   - component: {fileID: 771270897961618238}
   - component: {fileID: 8243471803111856289}
-  - component: {fileID: 1294086999330715786}
   - component: {fileID: 771270897961618237}
   - component: {fileID: 5568739954313126471}
   - component: {fileID: 6921299986261910139}
@@ -590,6 +691,7 @@ MonoBehaviour:
   rigidbody2d: {fileID: 771270897961618240}
   characterSpriteSymmetry: {fileID: 771270897961618237}
   healthBar: {fileID: 5568739954313126471}
+  weaponController: {fileID: 1223881553}
 --- !u!114 &8243471803111856289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,86 +704,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06d4185ac4824c60a3a1b271af706785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1294086999330715786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 771270897961618242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7acb383077f44ce387bbce1a4e400527, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponRenderer: {fileID: 771270897677072030}
-  sortingGroup: {fileID: 765363646}
-  weaponRootSocket: {fileID: 771270897767312345}
-  weaponChildSocket: {fileID: 771270897677072031}
-  directionDataset:
-  - title: Right
-    direction: 4
-    sortOrder: 0
-    localPosition: {x: 0.6, y: -0.105, z: 0}
-    localRotation: {x: 0, y: 0, z: 27}
-    flipX: 0
-    flipY: 0
-  - title: DownRight
-    direction: 6
-    sortOrder: 1
-    localPosition: {x: 0.38, y: -0.385, z: 0}
-    localRotation: {x: 0, y: 0, z: 14.95}
-    flipX: 0
-    flipY: 0
-  - title: UpRight
-    direction: 1
-    sortOrder: 0
-    localPosition: {x: 0, y: 0.58, z: 0}
-    localRotation: {x: 0, y: 0, z: 138.175}
-    flipX: 0
-    flipY: 0
-  - title: Up
-    direction: 0
-    sortOrder: 0
-    localPosition: {x: -0.225, y: 0.435, z: 0}
-    localRotation: {x: 0, y: 0, z: 156}
-    flipX: 0
-    flipY: 1
-  - title: UpLeft
-    direction: 2
-    sortOrder: 0
-    localPosition: {x: 0.085, y: 0.635, z: 0}
-    localRotation: {x: 0, y: 180, z: 145.5}
-    flipX: 0
-    flipY: 0
-  - title: Left
-    direction: 3
-    sortOrder: 1
-    localPosition: {x: -0.59, y: -0.165, z: 0}
-    localRotation: {x: 0, y: 180, z: 26.18}
-    flipX: 0
-    flipY: 0
-  - title: DownLeft
-    direction: 7
-    sortOrder: 1
-    localPosition: {x: -0.415, y: -0.35, z: 0}
-    localRotation: {x: 0, y: 180, z: 14}
-    flipX: 0
-    flipY: 0
-  - title: Down
-    direction: 5
-    sortOrder: 1
-    localPosition: {x: 0.48, y: -0.286, z: 0}
-    localRotation: {x: 0, y: 0, z: 26.62}
-    flipX: 0
-    flipY: 0
-  - title: DownRight
-    direction: 6
-    sortOrder: 1
-    localPosition: {x: 0.44, y: -0.33, z: 0}
-    localRotation: {x: 0, y: 0, z: 15.33}
-    flipX: 0
-    flipY: 0
 --- !u!114 &771270897961618237
 MonoBehaviour:
   m_ObjectHideFlags: 0

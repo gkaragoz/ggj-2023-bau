@@ -14,7 +14,8 @@ namespace Main_Character
         [SerializeField] private Rigidbody2D rigidbody2d;
         [SerializeField] private CharacterSpriteSymmetry characterSpriteSymmetry;
         [SerializeField] private HealthBar healthBar;
-
+        [SerializeField] private CharacterWeaponController weaponController;
+        
         public static Action<float> OnReceiveHit;
         public static Action OnDeath;
         
@@ -49,7 +50,7 @@ namespace Main_Character
             }
         }
 
-        private void Update()
+        private void HandleMovement()
         {
             var horizontal = Input.GetAxisRaw("Horizontal");
             var vertical = Input.GetAxisRaw("Vertical");
@@ -67,6 +68,28 @@ namespace Main_Character
             }
 
             rigidbody2d.velocity = Vector3.SmoothDamp(rigidbody2d.velocity, targetVelocity, ref _refVel, .05F);
+        }
+
+        private bool CanAttack()
+        {
+            return !_isDead && !weaponController.IsSwingAnimationPlaying;
+        }
+
+        private void HandleAttack()
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (CanAttack())
+                {
+                    weaponController.SwingWeapon();
+                }
+            }
+        }
+
+        private void Update()
+        {
+            HandleMovement();
+            HandleAttack();
         }
     }
 }
