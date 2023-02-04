@@ -2,57 +2,62 @@ using UnityEngine;
 
 namespace Main_Character
 {
-    public enum Direction
-    {
-        Up,
-        UpRight,
-        UpLeft,
-        Left,
-        Right,
-        Down,
-        DownRight,
-        DownLeft
-    }
-
     public class CharacterSpriteSymmetry : MonoBehaviour
     {
-        [SerializeField] private CharacterDirectionController characterDirection;
-        [SerializeField] private SpriteRenderer character;
-        [SerializeField] private Sprite horizontalRenderer;
-        [SerializeField] private Sprite upRenderer;
-        [SerializeField] private Sprite backRenderer;
+        [SerializeField] private SpriteRenderer characterRenderer;
+        [SerializeField] private Sprite sideDirection;
+        [SerializeField] private Sprite upDirection;
+        [SerializeField] private Sprite upSideDirection;
+        [SerializeField] private Sprite downDirection;
+        [SerializeField] private Sprite downSideDirection;
 
-        private void Update()
+        private void UpdateVisual(Direction direction)
         {
-            if (direction.y is > -.5F and < .5F && direction.x is >= -1F and < 0F)
+            switch (direction)
             {
-                character.sprite = horizontalRenderer;
-                character.flipX = true;
+                case Direction.Up:
+                    characterRenderer.sprite = upDirection;
+                    characterRenderer.flipX = false;
+                    break;
+                case Direction.UpRight:
+                    characterRenderer.sprite = upSideDirection;
+                    characterRenderer.flipX = true;
+                    break;
+                case Direction.UpLeft:
+                    characterRenderer.sprite = upSideDirection;
+                    characterRenderer.flipX = false;
+                    break;
+                case Direction.Left:
+                    characterRenderer.sprite = sideDirection;
+                    characterRenderer.flipX = true;
+                    break;
+                case Direction.Right:
+                    characterRenderer.sprite = sideDirection;
+                    characterRenderer.flipX = false;
+                    break;
+                case Direction.Down:
+                    characterRenderer.sprite = downDirection;
+                    characterRenderer.flipX = false;
+                    break;
+                case Direction.DownRight:
+                    characterRenderer.sprite = downSideDirection;
+                    characterRenderer.flipX = false;
+                    break;
+                case Direction.DownLeft:
+                    characterRenderer.sprite = downSideDirection;
+                    characterRenderer.flipX = true;
+                    break;
             }
-            
-            else if (direction.y is > -.5F and < .5F && direction.x is > 0 and <= 1F)
-            {
-                character.sprite = horizontalRenderer;
-                character.flipX = false;
-            }
-            
-            else if (direction.x is > -.5F and < 0F && direction.y is > 0 and <= 1F)
-            {
-                character.sprite = upRenderer;
-                character.flipX = false;
-            }
-            
-            else if (direction.x is > 0F and < 0.5F && direction.y is > 0 and <= 1F)
-            {
-                character.sprite = upRenderer;
-                character.flipX = true;
-            }
-            
-            else if (direction.x is > -.5F and < .5F && direction.y is >= -1F and < 0F)
-            {
-                character.sprite = backRenderer;
-                character.flipX = false;
-            }
+        }
+
+        private void OnEnable()
+        {
+            CharacterDirectionController.OnChangeDirection += UpdateVisual;
+        }
+
+        private void OnDisable()
+        {
+            CharacterDirectionController.OnChangeDirection -= UpdateVisual;
         }
     }
 }

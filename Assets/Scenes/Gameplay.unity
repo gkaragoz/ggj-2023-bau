@@ -574,10 +574,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 771270897961618237, guid: 7289cc814d8f14e04be0611157f13645, type: 3}
-      propertyPath: playerCamera
-      value: 
-      objectReference: {fileID: 963194227}
     - target: {fileID: 771270897961618241, guid: 7289cc814d8f14e04be0611157f13645, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -625,10 +621,6 @@ PrefabInstance:
     - target: {fileID: 771270897961618242, guid: 7289cc814d8f14e04be0611157f13645, type: 3}
       propertyPath: m_Name
       value: Main Character
-      objectReference: {fileID: 0}
-    - target: {fileID: 6921299986261910139, guid: 7289cc814d8f14e04be0611157f13645, type: 3}
-      propertyPath: BounceScale.x
-      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7289cc814d8f14e04be0611157f13645, type: 3}

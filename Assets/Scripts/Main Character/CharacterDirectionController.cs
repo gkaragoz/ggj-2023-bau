@@ -1,15 +1,38 @@
-﻿using UnityEngine;
+﻿using System;
+using Samples.Basic.Scripts;
+using UnityEngine;
 
 namespace Main_Character
 {
-    public class CharacterDirectionController : MonoBehaviour
+    public enum Direction
+    {
+        Up,
+        UpRight,
+        UpLeft,
+        Left,
+        Right,
+        Down,
+        DownRight,
+        DownLeft
+    }
+
+    public class CharacterDirectionController : Singleton<CharacterDirectionController>
     {
         public Direction CurrentDirection { get; private set; } = Direction.Right;
-        private Camera _characterCamera;
+        public static Action<Direction> OnChangeDirection;
 
+        private Camera _characterCamera;
+        
         private void Awake()
         {
             _characterCamera = Camera.main;
+        }
+
+        private void ChangeDirection(Direction direction)
+        {
+            if(direction == CurrentDirection) return;
+            CurrentDirection = direction;
+            OnChangeDirection?.Invoke(CurrentDirection);
         }
 
         public void Update()
@@ -20,43 +43,45 @@ namespace Main_Character
 
             if (direction.x is > -.25F and < .25F && direction.y is > 0F and < 1F)
             {
-                CurrentDirection = Direction.Up;
+                ChangeDirection(Direction.Up);
             }
             
             else if (direction.x is > -1F and < -.25F && direction.y is > .25F and < 1F)
             {
-                CurrentDirection = Direction.UpLeft;
+                ChangeDirection(Direction.UpLeft);
             }
             
             else if (direction.x is > .25F and < 1F && direction.y is > .25F and < 1F)
             {
-                CurrentDirection = Direction.UpRight;
+                ChangeDirection(Direction.UpRight);
             }
             
-            else if (direction.x is > -1F and < 0F && direction.y is > -.25F and < .25F)
+            else if (direction.x is >= -1F and < 0F && direction.y is > -.25F and < .25F)
             {
-                CurrentDirection = Direction.Left;
+                ChangeDirection(Direction.Left);
             }
             
-            else if (direction.x is > 0F and < 1F && direction.y is > -.25F and < .25F)
+            else if (direction.x is > 0F and <= 1F && direction.y is > -.25F and < .25F)
             {
-                CurrentDirection = Direction.Right;
+                ChangeDirection(Direction.Right);
             }
             
             else if (direction.x is > -.25F and < .25F && direction.y is > -1F and < 0F)
             {
-                CurrentDirection = Direction.Down;
+                ChangeDirection(Direction.Down);
             }
             
             else if (direction.x is > -1F and < -.25F && direction.y is > -1F and < -.25F)
             {
-                CurrentDirection = Direction.DownLeft;
+                ChangeDirection(Direction.DownLeft);
             }
             
             else if (direction.x is > .25F and < 1F && direction.y is > -1F and < -.25F)
             {
-                CurrentDirection = Direction.DownRight;
+                ChangeDirection(Direction.DownRight);
             }
+            
+            // Debug.LogError($"Vector2D: {direction}, Direction: {CurrentDirection}");
         }
     }
 }
