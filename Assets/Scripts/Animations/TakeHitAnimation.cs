@@ -41,17 +41,24 @@ namespace Animations
             
             StopAllCoroutines();
             StartCoroutine(HalfwayCallback());
-        
+
+            BounceIt(onCompleted);
+            FlashAnimation();
+            PushTo(hitPosition);
+        }
+
+        private void BounceIt(Action onCompleted)
+        {
             _bounceTween?.Kill();
             _transform.localScale = _originalScale;
             _bounceTween = transform.DOPunchScale(BounceScale, SimpleFlash.Duration)
                 .OnComplete(() => onCompleted?.Invoke());
-        
-            SimpleFlash.Flash();
-            
-            PushTo(hitPosition);
         }
 
+        private void FlashAnimation()
+        {
+            SimpleFlash.Flash();
+        }
         private void PushTo(Vector2 hitPosition)
         {
             _takeHitTween?.Kill();
