@@ -326,6 +326,8 @@ GameObject:
   - component: {fileID: 765363646}
   - component: {fileID: 1223881552}
   - component: {fileID: 1223881553}
+  - component: {fileID: 3289145143247910366}
+  - component: {fileID: 4752673359219991955}
   m_Layer: 0
   m_Name: WeaponHolder
   m_TagString: Untagged
@@ -460,6 +462,51 @@ MonoBehaviour:
     localRotation: {x: 0, y: 0, z: 15.33}
     flipX: 0
     flipY: 0
+--- !u!114 &3289145143247910366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771270897767312346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c3039c86e91b5d46998c27576ae9ac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!60 &4752673359219991955
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771270897767312346}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.4531226, y: 0.6065285}
+      - {x: 0.2893591, y: 0.105828166}
+      - {x: 0.35658497, y: -0.06722593}
+      - {x: 0.5277882, y: -0.39593914}
+      - {x: 0.626482, y: -0.5596082}
+      - {x: 0.6958761, y: -0.48475993}
+      - {x: 1.0996324, y: -0.04729283}
+      - {x: 1.4003067, y: 0.4839295}
 --- !u!1 &771270897812274053
 GameObject:
   m_ObjectHideFlags: 0

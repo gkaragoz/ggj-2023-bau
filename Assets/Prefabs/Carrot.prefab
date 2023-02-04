@@ -165,9 +165,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0208408662350704f8361f6c38a1a766, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAnimation: {fileID: 8351679854119863858}
+  dieAnimation: {fileID: 8351679854119863859}
+  speedInterval: {x: 3, y: 6}
   damageAmount: 10
   attackCooldown: 3
-  speedInterval: {x: 3, y: 6}
+  hitLimit: 2
+  reward: 5
 --- !u!114 &8351679854119863859
 MonoBehaviour:
   m_ObjectHideFlags: 0
