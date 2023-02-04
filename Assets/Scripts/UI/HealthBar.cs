@@ -1,3 +1,4 @@
+using Animations;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,6 +7,7 @@ namespace UI
 {
     public class HealthBar : MonoBehaviour
     {
+        [SerializeField] private SimpleFlash SimpleFlash;
         [SerializeField] private RectTransform ParentRectTransform;
         [SerializeField] private Image HealthBarFillImage;
         [SerializeField] private Image HealthBarDamageIndicatorImage;
@@ -42,6 +44,7 @@ namespace UI
 
             _healthIndicatorTween?.Kill();
             _healthIndicatorTween = HealthBarDamageIndicatorImage.DOFillAmount(healthPercentage, DamageIndicatorDuration);
+            SimpleFlash.Flash();
         }
     }
 }

@@ -527,6 +527,7 @@ GameObject:
   - component: {fileID: 771270897961618238}
   - component: {fileID: 771270897961618237}
   - component: {fileID: 5568739954313126471}
+  - component: {fileID: 8332180792418796017}
   - component: {fileID: 771270897961618239}
   - component: {fileID: 771270897961618240}
   - component: {fileID: 771270897961618236}
@@ -598,12 +599,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a74099bbe7847541b298aa99c797a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SimpleFlash: {fileID: 8332180792418796017}
   ParentRectTransform: {fileID: 2878982533789537986}
   HealthBarFillImage: {fileID: 1342899555}
   HealthBarDamageIndicatorImage: {fileID: 1114294721}
   ShakeStrength: 0.5
   ShakeDuration: 0.25
   DamageIndicatorDuration: 0.5
+--- !u!114 &8332180792418796017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771270897961618242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d3a3e704f4f854eba62c0fdd32e9f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 771270897812274051}
+  flashMaterial: {fileID: 2100000, guid: 431d19dacbcffbc4f8ec530de30c1468, type: 2}
+  duration: 0.25
 --- !u!58 &771270897961618239
 CircleCollider2D:
   m_ObjectHideFlags: 0
