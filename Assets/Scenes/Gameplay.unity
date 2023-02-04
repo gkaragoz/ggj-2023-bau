@@ -540,17 +540,17 @@ MonoBehaviour:
       - serializedVersion: 3
         time: 0
         value: 5
-        inSlope: -0.045
-        outSlope: -0.045
+        inSlope: -0.049000002
+        outSlope: -0.049000002
         tangentMode: 34
         weightedMode: 0
         inWeight: 0
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 100
-        value: 0.5
-        inSlope: -0.045
-        outSlope: -0.045
+        value: 0.1
+        inSlope: -0.049000002
+        outSlope: -0.049000002
         tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
@@ -559,9 +559,14 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 0
     spawnAreas:
-    - {fileID: 0}
+    - {fileID: 2146637185}
     enemies:
     - {fileID: 982149742, guid: cd5f8b729c07b4976a7a4b1779238859, type: 3}
+--- !u!212 &2146637185 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1572276473713758708, guid: bf0dc8910c6204f4d99f775bfefa0d39, type: 3}
+  m_PrefabInstance: {fileID: 1509044701}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &771270897659861759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -569,6 +574,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 771270897961618237, guid: 7289cc814d8f14e04be0611157f13645, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 963194227}
     - target: {fileID: 771270897961618241, guid: 7289cc814d8f14e04be0611157f13645, type: 3}
       propertyPath: m_RootOrder
       value: 1
