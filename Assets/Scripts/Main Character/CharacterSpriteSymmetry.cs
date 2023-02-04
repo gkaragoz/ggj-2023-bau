@@ -2,20 +2,28 @@ using UnityEngine;
 
 namespace Main_Character
 {
+    public enum Direction
+    {
+        Up,
+        UpRight,
+        UpLeft,
+        Left,
+        Right,
+        Down,
+        DownRight,
+        DownLeft
+    }
+
     public class CharacterSpriteSymmetry : MonoBehaviour
     {
-        [SerializeField] private Camera playerCamera;
+        [SerializeField] private CharacterDirectionController characterDirection;
         [SerializeField] private SpriteRenderer character;
         [SerializeField] private Sprite horizontalRenderer;
         [SerializeField] private Sprite upRenderer;
         [SerializeField] private Sprite backRenderer;
-        
-        public void Update()
-        {
-            var playerPosition = transform.position;
-            var inputPosition = (Vector2)playerCamera.ScreenToWorldPoint(Input.mousePosition);
-            var direction = (inputPosition - new Vector2(playerPosition.x, playerPosition.y)).normalized;
 
+        private void Update()
+        {
             if (direction.y is > -.5F and < .5F && direction.x is >= -1F and < 0F)
             {
                 character.sprite = horizontalRenderer;
