@@ -7,7 +7,7 @@ public class SpawnTest : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.Backspace))
         {
             var newObject = Instantiate(EnemyAnimation);
             newObject.transform.position = transform.position;

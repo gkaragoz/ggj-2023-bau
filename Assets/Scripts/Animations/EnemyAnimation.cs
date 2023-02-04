@@ -9,9 +9,9 @@ namespace Animations
     
         public void TakeHit()
         {
-            TakeHitAnimation.TakeHit(() =>
+            TakeHitAnimation.TakeHit(transform.position, () =>
             {
-                Die();
+                //Die();
             }, null);
         }
 
