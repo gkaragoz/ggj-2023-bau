@@ -10,7 +10,6 @@ namespace UI
         [SerializeField] private TextMeshProUGUI Text;
 
         private Camera _camera;
-        private Tween _animationTween;
         
         private void Awake()
         {
@@ -30,7 +29,7 @@ namespace UI
         
             SelfRectTransform.anchoredPosition = worldObjectScreenPosition;
 
-            var startPosition = (Vector2)SelfRectTransform.transform.position + Vector2.up * 20f;
+            var startPosition = (Vector2)SelfRectTransform.transform.position + Vector2.up * 100f;
             var peekPosition = startPosition + Vector2.one * 20f;
             var endPosition = peekPosition + Vector2.one * 50f;
             var movementPath = new Vector3[]
@@ -39,9 +38,9 @@ namespace UI
                 peekPosition,
                 endPosition
             };
-            
-            _animationTween?.Kill();
-            _animationTween = SelfRectTransform.DOPath(movementPath, 0.5f, PathType.CatmullRom)
+
+            Text.DOFade(0f, 0.5f).SetDelay(0.25f);
+            SelfRectTransform.DOPath(movementPath, 0.75f, PathType.CatmullRom)
                 .OnComplete(() => gameObject.SetActive(false));
         }
     }
