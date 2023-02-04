@@ -46,7 +46,7 @@ namespace Main_Character
                 }
                 
                 OnReceiveHit?.Invoke(enemy.DamageAmount);
-                healthBar.TakeDamage(col.transform.position, _currentHealth, health);
+                healthBar.TakeDamage((int)enemy.DamageAmount, col.transform.position, _currentHealth, health);
             }
         }
 

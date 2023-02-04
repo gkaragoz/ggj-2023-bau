@@ -33,7 +33,7 @@ namespace UI
             HealthBarDamageIndicatorImage.fillAmount = healthPercentage;
         }
 
-        public void TakeDamage(Vector3 hitPoint, float currentHealth, float maxHealth, bool pushBack = false)
+        public void TakeDamage(int damageAmount, Vector3 hitPoint, float currentHealth, float maxHealth, bool pushBack = false)
         {
             _shakeTween?.Kill();
             ParentRectTransform.localScale = _parentScale;
@@ -49,6 +49,8 @@ namespace UI
             {
                 TakeHitAnimation.TakeHit(hitPoint, null, null, pushBack);
             }
+            
+            DamageIndicatorFactory.Instance.Create(damageAmount, transform);
         }
     }
 }

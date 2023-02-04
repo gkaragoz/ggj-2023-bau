@@ -19,7 +19,7 @@ namespace Main_Character
             if (Input.GetKeyDown(KeyCode.KeypadEnter))
             {
                 CurrentHealth -= UnityEngine.Random.Range(5f, 25f);
-                HealthBar.TakeDamage((Vector2)transform.position + Vector2.right, CurrentHealth, MaxHealth);
+                HealthBar.TakeDamage(10, (Vector2)transform.position + Vector2.right, CurrentHealth, MaxHealth);
             }
         }
     }
