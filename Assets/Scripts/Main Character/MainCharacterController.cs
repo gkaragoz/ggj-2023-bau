@@ -1,15 +1,50 @@
+using System;
+using Enemy;
+using Gameplay;
 using Samples.Basic.Scripts;
+using UI;
 using UnityEngine;
 
 namespace Main_Character
 {
     public class MainCharacterController : Singleton<MainCharacterController>
     {
-        [SerializeField] private Rigidbody2D rigidbody2d;
+        [SerializeField] private float health;
         [SerializeField] private float speed;
+        [SerializeField] private Rigidbody2D rigidbody2d;
         [SerializeField] private CharacterSpriteSymmetry characterSpriteSymmetry;
-        
+        [SerializeField] private HealthBar healthBar;
+
+        public static Action<float> OnReceiveHit;
         private Vector3 _refVel = Vector3.zero;
+        private float _currentHealth;
+        private bool _isDead;
+
+        private void Awake()
+        {
+            _currentHealth = health;
+            healthBar.SetHealth(health, health);
+        }
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if(_isDead) return;
+            
+            if (col.TryGetComponent(out EnemyController enemy))
+            {
+                _currentHealth = Mathf.Clamp(_currentHealth - enemy.DamageAmount, 0F, health);
+
+                if (_currentHealth == 0)
+                {
+                    GameManager.OnComplete?.Invoke();
+                    _isDead = true;
+                    return;
+                }
+                
+                OnReceiveHit?.Invoke(enemy.DamageAmount);
+                healthBar.TakeDamage(col.transform.position, _currentHealth, health);
+            }
+        }
 
         private void Update()
         {
