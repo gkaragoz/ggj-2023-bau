@@ -626,5 +626,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Character
       objectReference: {fileID: 0}
+    - target: {fileID: 6921299986261910139, guid: 7289cc814d8f14e04be0611157f13645, type: 3}
+      propertyPath: BounceScale.x
+      value: 0.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7289cc814d8f14e04be0611157f13645, type: 3}
