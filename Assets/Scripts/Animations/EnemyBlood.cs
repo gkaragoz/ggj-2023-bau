@@ -6,6 +6,7 @@ namespace Animations
     public class EnemyBlood : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer SpriteRenderer;
+        [SerializeField] private Color Color;
         [SerializeField] private Sprite[] BloodSprites;
         [SerializeField] private float FadeInDuration = 0.25F;
         [SerializeField] private float ScaleInDuration = 0.5F;
@@ -27,6 +28,7 @@ namespace Animations
             transform.SetParent(null);
             transform.localScale = Vector3.zero;
             SpriteRenderer.sprite = GetRandomBloodSprite();
+            SpriteRenderer.color = Color;
 
             gameObject.SetActive(true);
             
