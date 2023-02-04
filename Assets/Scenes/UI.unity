@@ -145,7 +145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &170516448
 RectTransform:
   m_ObjectHideFlags: 0
@@ -211,6 +211,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1771123717}
     m_Modifications:
+    - target: {fileID: 2131574802935450769, guid: 8ca44b65cf4d23946b84804402d5fb8a, type: 3}
+      propertyPath: Flipped
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2131574802935450769, guid: 8ca44b65cf4d23946b84804402d5fb8a, type: 3}
+      propertyPath: FlippedX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2131574802935450769, guid: 8ca44b65cf4d23946b84804402d5fb8a, type: 3}
+      propertyPath: FlippedY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2131574802935450769, guid: 8ca44b65cf4d23946b84804402d5fb8a, type: 3}
+      propertyPath: HeightPercentage
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2131574802935450769, guid: 8ca44b65cf4d23946b84804402d5fb8a, type: 3}
+      propertyPath: LeftEye.MinMaxPosY.y
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 2131574802935450769, guid: 8ca44b65cf4d23946b84804402d5fb8a, type: 3}
+      propertyPath: RightEye.MinMaxPosY.y
+      value: 55
+      objectReference: {fileID: 0}
     - target: {fileID: 3810604185692745290, guid: 8ca44b65cf4d23946b84804402d5fb8a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -805,6 +829,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1771123717}
     m_Modifications:
+    - target: {fileID: 2131574802935450769, guid: 8ca44b65cf4d23946b84804402d5fb8a, type: 3}
+      propertyPath: Flipped
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2131574802935450769, guid: 8ca44b65cf4d23946b84804402d5fb8a, type: 3}
+      propertyPath: FlippedX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2131574802935450769, guid: 8ca44b65cf4d23946b84804402d5fb8a, type: 3}
+      propertyPath: FlippedY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2131574802935450769, guid: 8ca44b65cf4d23946b84804402d5fb8a, type: 3}
+      propertyPath: LeftEye.MinMaxPosY.y
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 2131574802935450769, guid: 8ca44b65cf4d23946b84804402d5fb8a, type: 3}
+      propertyPath: RightEye.MinMaxPosY.y
+      value: 85
+      objectReference: {fileID: 0}
     - target: {fileID: 3810604185692745290, guid: 8ca44b65cf4d23946b84804402d5fb8a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1023,6 +1067,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1771123717}
     m_Modifications:
+    - target: {fileID: 2131574802935450769, guid: 8ca44b65cf4d23946b84804402d5fb8a, type: 3}
+      propertyPath: LeftEye.MinMaxPosY.y
+      value: 80.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2131574802935450769, guid: 8ca44b65cf4d23946b84804402d5fb8a, type: 3}
+      propertyPath: RightEye.MinMaxPosY.y
+      value: 80.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3810604185692745290, guid: 8ca44b65cf4d23946b84804402d5fb8a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1691,6 +1743,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1771123717}
     m_Modifications:
+    - target: {fileID: 2131574802935450769, guid: 8ca44b65cf4d23946b84804402d5fb8a, type: 3}
+      propertyPath: HeightPercentage
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2131574802935450769, guid: 8ca44b65cf4d23946b84804402d5fb8a, type: 3}
+      propertyPath: LeftEye.MinMaxPosY.y
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 2131574802935450769, guid: 8ca44b65cf4d23946b84804402d5fb8a, type: 3}
+      propertyPath: RightEye.MinMaxPosY.y
+      value: 130
+      objectReference: {fileID: 0}
     - target: {fileID: 3810604185692745290, guid: 8ca44b65cf4d23946b84804402d5fb8a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
