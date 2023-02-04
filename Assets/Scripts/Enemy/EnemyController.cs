@@ -1,4 +1,7 @@
+using System;
 using System.Collections;
+using Animations;
+using Gameplay;
 using Main_Character;
 using UnityEngine;
 using UnityEngine.AI;
@@ -15,10 +18,14 @@ namespace Enemy
     
     public class EnemyController : MonoBehaviour
     {
+        [SerializeField] private TakeHitAnimation hitAnimation;
+        [SerializeField] private DieAnimation dieAnimation;
+        [SerializeField] private Vector2 speedInterval;
         [SerializeField] private float damageAmount;
         [SerializeField] private float attackCooldown;
-        [SerializeField] private Vector2 speedInterval;
-
+        [SerializeField] private int hitLimit;
+        [SerializeField] private int reward;
+        
         private Transform _current;
         private Transform _target;
         private NavMeshAgent _agent;
@@ -26,7 +33,9 @@ namespace Enemy
         private EnemyState _currentState = EnemyState.Walk;
         private bool _canAttack = true;
         private YieldInstruction _attackCooldown;
+        private int _health;
 
+        public int Reward => reward;
         public float DamageAmount => _currentState == EnemyState.Attack ? damageAmount : damageAmount / 3F;
         
         private void Awake()
@@ -39,16 +48,28 @@ namespace Enemy
             _agent.updateUpAxis = false;
             _agent.speed = Random.Range(speedInterval.x, speedInterval.y);
             _agent.acceleration = _agent.speed * 3;
+            _health = hitLimit;
             var speedAlpha = _agent.speed / speedInterval.y;
             transform.localScale = Vector3.one * Mathf.Lerp(1.6F, 1F, speedAlpha);
             _attackCooldown = new WaitForSeconds(Random.Range(attackCooldown / 2F, attackCooldown));
         }
 
-        private void OnTriggerEnter2D(Collider2D col)
+        private void OnTriggerEnter2DHandler(Collider2D col)
         {
-            if (col.TryGetComponent(out MainCharacterController player))
+            if (col.TryGetComponent(out CharacterWeaponController playerWeapon))
             {
-                // TODO
+                _health--;
+                
+                if (_health == 0)
+                {
+                    dieAnimation.Die(Destroy);
+                    
+                    // TODO : Send score to ScoreManager
+                    
+                    return;
+                }
+
+                hitAnimation.TakeHit(playerWeapon.transform.position, null, null);
             }
         }
 
@@ -93,6 +114,16 @@ namespace Enemy
             _canAttack = false;
             yield return _attackCooldown;
             _canAttack = true;
+        }
+
+        private void OnEnable()
+        {
+            TriggerTransmitter.
+        }
+
+        private void OnDisable()
+        {
+            throw new NotImplementedException();
         }
     }
 }

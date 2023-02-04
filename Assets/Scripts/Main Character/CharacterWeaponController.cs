@@ -23,10 +23,12 @@ namespace Main_Character
     {
         [SerializeField] private SpriteRenderer weaponRenderer;
         [SerializeField] private SortingGroup sortingGroup;
-        [SerializeField] private Transform weaponRootSocket;
+        [SerializeField] private Animator weaponAnimator;
         [SerializeField] private Transform weaponChildSocket;
         [SerializeField] private List<WeaponDirectionData> directionDataset;
 
+        public bool IsSwingAnimationPlaying { get; private set; }
+        
         private Tween _rotationAnimation, _moveAnimation;
         
         private void UpdateWeaponChildSocket(Direction direction)
@@ -40,6 +42,17 @@ namespace Main_Character
             weaponRenderer.flipY = data.flipY;
             _moveAnimation = weaponChildSocket.DOLocalMove(data.localPosition, .2F);
             _rotationAnimation = weaponChildSocket.DOLocalRotate(data.localRotation, .2F);
+        }
+
+        public void SwingWeapon()
+        {
+            weaponAnimator.Play("Swing");
+            IsSwingAnimationPlaying = true;
+        }
+
+        private void OnCompleteSwingAnimation()
+        {
+            IsSwingAnimationPlaying = false;
         }
 
         private void OnEnable()
