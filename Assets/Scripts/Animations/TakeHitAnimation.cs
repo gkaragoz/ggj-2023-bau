@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using DG.Tweening;
+using UI;
 using UnityEngine;
 
 namespace Animations
@@ -30,7 +31,7 @@ namespace Animations
             _originalScale = TargetTransform.localScale;
         }
 
-        public void TakeHit(Vector2 hitPosition, Action onHalfwayCompleted, Action onCompleted, bool pushBack = false)
+        public void TakeHit(int damageAmount, Vector2 hitPosition, Action onHalfwayCompleted, Action onCompleted, bool pushBack = false)
         {
             IEnumerator HalfwayCallback()
             {
@@ -40,6 +41,8 @@ namespace Animations
             
             StopAllCoroutines();
             StartCoroutine(HalfwayCallback());
+            
+            DamageIndicatorFactory.Instance.Create(damageAmount, transform);
 
             BounceIt(onCompleted);
             FlashAnimation();

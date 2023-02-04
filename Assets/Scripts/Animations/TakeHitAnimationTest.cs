@@ -12,7 +12,7 @@ namespace Animations
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                TakeHitAnimation.TakeHit(KnifeTransform.position, null, null);
+                TakeHitAnimation.TakeHit(1, KnifeTransform.position, null, null);
             }
         }
     }

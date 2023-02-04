@@ -45,12 +45,7 @@ namespace UI
             _healthIndicatorTween?.Kill();
             _healthIndicatorTween = HealthBarDamageIndicatorImage.DOFillAmount(healthPercentage, DamageIndicatorDuration);
             
-            if (currentHealth > 0)
-            {
-                TakeHitAnimation.TakeHit(hitPoint, null, null, pushBack);
-            }
-            
-            DamageIndicatorFactory.Instance.Create(damageAmount, transform);
+            TakeHitAnimation.TakeHit(damageAmount, hitPoint, null, null, pushBack);
         }
     }
 }

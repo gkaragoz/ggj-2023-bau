@@ -2,6 +2,7 @@ using System.Collections;
 using Animations;
 using DG.Tweening;
 using Main_Character;
+using UI;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -105,6 +106,11 @@ namespace Enemy
             DOTween.Kill(transform);
             CurrentState = EnemyState.Walk;
             _health--;
+
+            hitAnimation.TakeHit(1, hitPoint, () =>
+            {
+                _isAttackable = _health != 0;;
+            }, null, true);
             
             if (_health == 0)
             {
@@ -113,11 +119,6 @@ namespace Enemy
                 CurrentState = EnemyState.Death;
                 return;
             }
-
-            hitAnimation.TakeHit(hitPoint, () =>
-            {
-                _isAttackable = true;
-            }, null, true);
         }
     }
 }
