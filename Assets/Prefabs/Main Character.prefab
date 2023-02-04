@@ -568,9 +568,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95947ae133e740f88116ef75e2bac54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody2d: {fileID: 771270897961618240}
+  health: 100
   speed: 8
+  rigidbody2d: {fileID: 771270897961618240}
   characterSpriteSymmetry: {fileID: 771270897961618237}
+  healthBar: {fileID: 5568739954313126471}
 --- !u!114 &771270897961618237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -615,9 +617,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.1, y: 0.5}
   serializedVersion: 2
-  m_Radius: 0.65
+  m_Radius: 0.45
 --- !u!50 &771270897961618240
 Rigidbody2D:
   serializedVersion: 4

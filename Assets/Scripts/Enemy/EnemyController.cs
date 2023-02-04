@@ -15,6 +15,7 @@ namespace Enemy
     
     public class EnemyController : MonoBehaviour
     {
+        [SerializeField] private float damageAmount;
         [SerializeField] private float attackCooldown;
         [SerializeField] private Vector2 speedInterval;
 
@@ -26,6 +27,8 @@ namespace Enemy
         private bool _canAttack = true;
         private YieldInstruction _attackCooldown;
 
+        public float DamageAmount => _currentState == EnemyState.Attack ? damageAmount : damageAmount / 3F;
+        
         private void Awake()
         {
             _current = transform;
@@ -43,7 +46,10 @@ namespace Enemy
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            Debug.Log(col.name);
+            if (col.TryGetComponent(out MainCharacterController player))
+            {
+                // TODO
+            }
         }
 
         private void Update()
