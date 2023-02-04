@@ -211,6 +211,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d92695ec15e84322a015c5d4ce60ac55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &765363644 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 771270897767312346, guid: 7289cc814d8f14e04be0611157f13645, type: 3}
+  m_PrefabInstance: {fileID: 771270897659861759}
+  m_PrefabAsset: {fileID: 0}
+--- !u!210 &765363646
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765363644}
+  m_Enabled: 1
+  m_SortingLayerID: 1101321149
+  m_SortingLayer: 1
+  m_SortingOrder: 1
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,7 +624,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1894600544
 Transform:
   m_ObjectHideFlags: 0
@@ -673,6 +689,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 771270897677072030, guid: 7289cc814d8f14e04be0611157f13645, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 771270897677072030, guid: 7289cc814d8f14e04be0611157f13645, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 771270897767312345, guid: 7289cc814d8f14e04be0611157f13645, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 771270897767312345, guid: 7289cc814d8f14e04be0611157f13645, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 771270897812274051, guid: 7289cc814d8f14e04be0611157f13645, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 771270897812274051, guid: 7289cc814d8f14e04be0611157f13645, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 771270897812274051, guid: 7289cc814d8f14e04be0611157f13645, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1101321149
+      objectReference: {fileID: 0}
     - target: {fileID: 771270897961618241, guid: 7289cc814d8f14e04be0611157f13645, type: 3}
       propertyPath: m_RootOrder
       value: 2

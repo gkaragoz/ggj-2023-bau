@@ -586,7 +586,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7608c0e2f8994e4ba921c1fa54486204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 771270897812274051}
+  character: {fileID: 771270897812274051}
+  horizontalRenderer: {fileID: 21300000, guid: 14b0c5111df10994fbb08aef1b05b07c, type: 3}
+  upRenderer: {fileID: 21300000, guid: e5a77e744af5f3542975db90dafab2c2, type: 3}
+  backRenderer: {fileID: 21300000, guid: 63538b269cf4309419f204c0c92fde1a, type: 3}
 --- !u!114 &5568739954313126471
 MonoBehaviour:
   m_ObjectHideFlags: 0
