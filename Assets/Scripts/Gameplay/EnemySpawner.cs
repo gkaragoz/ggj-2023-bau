@@ -1,26 +1,30 @@
+using Enemy;
 using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using Enemy;
-using Samples.Basic.Scripts;
-using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Gameplay
 {
-    public class TimerManager : Singleton<TimerManager>
-    {
-        
-    }
-
     [Serializable]
     public class SpawnData
     {
         public string waveName;
-        public float duration;
-        public SpriteRenderer spawnArea;
         public AnimationCurve difficultyCurve;
+        public List<SpriteRenderer> spawnAreas;
         public List<EnemyController> enemies;
+
+        public float Duration()
+        {
+            var keyCount = difficultyCurve.keys.Length;
+            return difficultyCurve.keys[keyCount - 1].time;
+        }
+
+        public EnemyController RandomEnemy()
+        {
+            return enemies[Random.Range(0, enemies.Count - 1)];
+        }
     }
     
     public class EnemySpawner : MonoBehaviour
@@ -30,7 +34,6 @@ namespace Gameplay
         private bool _shouldSpawn;
         private Coroutine _coroutine;
         private float _interval;
-        private int _spawnerIndex;
 
         private void StartSpawner()
         {
@@ -46,15 +49,45 @@ namespace Gameplay
         {
             while (_shouldSpawn)
             {
-                // TODO : Change seconds
-                yield return new WaitForSeconds(1F);
+                var waveData = GetSpawnData(out var remainedTime);
+                if (waveData == null) yield break;
+                var keyCount = waveData.difficultyCurve.keys.Length;
+                var waveAlpha = remainedTime / waveData.Duration();
+                var firstKey = waveData.difficultyCurve.keys[0].value;
+                var lastKey = waveData.difficultyCurve.keys[keyCount - 1].value;
+                var spawnRate = Mathf.Lerp(firstKey, lastKey, waveAlpha);
+                yield return new WaitForSeconds(spawnRate);
+                var enemy = Instantiate(waveData.RandomEnemy(), null);
+                enemy.transform.position = GetRandomSpawnPosition(waveData);
             }
+            
+            Debug.LogWarning("All wave completed!");
         }
 
+        private SpawnData GetSpawnData(out int remainedTime)
+        {
+            var passingTime = TimerManager.Instance.PassingSeconds;
+            foreach (var t in waves)
+            {
+                if (passingTime <= t.Duration())
+                {
+                    remainedTime = passingTime;
+                    return t;
+                }
+                
+                passingTime -= (int)t.Duration();
+                passingTime = passingTime < 0 ? 0 : passingTime;
+            }
+            
+            remainedTime = passingTime;
+            return null;
+        }
+        
         private Vector2 GetRandomSpawnPosition(SpawnData spawnData)
         {
-            var bounds = spawnData.spawnArea.bounds;
-            var rectPos = spawnData. spawnArea.transform.position;
+            var randomSpawnArea = spawnData.spawnAreas[Random.Range(0, spawnData.spawnAreas.Count)];
+            var bounds = randomSpawnArea.bounds;
+            var rectPos = randomSpawnArea.transform.position;
             var rectHeight = bounds.extents.y;
             var rectWidth = bounds.extents.x;
             var xPos = rectPos.x + Random.Range(-rectWidth, rectWidth);
