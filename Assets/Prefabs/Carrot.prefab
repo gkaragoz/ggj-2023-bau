@@ -167,7 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 10
   attackCooldown: 3
-  speedInterval: {x: 6, y: 12}
+  speedInterval: {x: 3, y: 6}
 --- !u!114 &8351679854119863859
 MonoBehaviour:
   m_ObjectHideFlags: 0

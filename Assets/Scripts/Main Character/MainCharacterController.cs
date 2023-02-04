@@ -67,7 +67,6 @@ namespace Main_Character
             }
 
             rigidbody2d.velocity = Vector3.SmoothDamp(rigidbody2d.velocity, targetVelocity, ref _refVel, .05F);
-            characterSpriteSymmetry.UpdateVelocity(direction);
         }
     }
 }
