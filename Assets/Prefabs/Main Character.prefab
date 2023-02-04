@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.84705883, b: 0.84705883, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -527,6 +527,7 @@ GameObject:
   - component: {fileID: 771270897961618238}
   - component: {fileID: 771270897961618237}
   - component: {fileID: 5568739954313126471}
+  - component: {fileID: 6921299986261910139}
   - component: {fileID: 8332180792418796017}
   - component: {fileID: 771270897961618239}
   - component: {fileID: 771270897961618240}
@@ -599,13 +600,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a74099bbe7847541b298aa99c797a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SimpleFlash: {fileID: 8332180792418796017}
+  TakeHitAnimation: {fileID: 6921299986261910139}
   ParentRectTransform: {fileID: 2878982533789537986}
   HealthBarFillImage: {fileID: 1342899555}
   HealthBarDamageIndicatorImage: {fileID: 1114294721}
   ShakeStrength: 0.5
   ShakeDuration: 0.25
   DamageIndicatorDuration: 0.5
+--- !u!114 &6921299986261910139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771270897961618242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84777ac6476bd234fa4ee4270788718b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlyHeight: 1
+  FlyDuration: 0.5
+  FlyEaseType: 7
+  PushBackMultiplier: 1
+  TargetTransform: {fileID: 771270897812274052}
+  BounceScale: {x: 1.2, y: -0.5, z: 0}
+  SimpleFlash: {fileID: 8332180792418796017}
 --- !u!114 &8332180792418796017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,7 +640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 771270897812274051}
   flashMaterial: {fileID: 2100000, guid: 431d19dacbcffbc4f8ec530de30c1468, type: 2}
-  duration: 0.25
+  duration: 0.15
 --- !u!58 &771270897961618239
 CircleCollider2D:
   m_ObjectHideFlags: 0

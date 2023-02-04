@@ -7,7 +7,7 @@ namespace UI
 {
     public class HealthBar : MonoBehaviour
     {
-        [SerializeField] private SimpleFlash SimpleFlash;
+        [SerializeField] private TakeHitAnimation TakeHitAnimation;
         [SerializeField] private RectTransform ParentRectTransform;
         [SerializeField] private Image HealthBarFillImage;
         [SerializeField] private Image HealthBarDamageIndicatorImage;
@@ -44,7 +44,11 @@ namespace UI
 
             _healthIndicatorTween?.Kill();
             _healthIndicatorTween = HealthBarDamageIndicatorImage.DOFillAmount(healthPercentage, DamageIndicatorDuration);
-            SimpleFlash.Flash();
+            
+            if (currentHealth > 0)
+            {
+                TakeHitAnimation.TakeHit(hitPoint, null, null);
+            }
         }
     }
 }
