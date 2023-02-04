@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -15,7 +16,7 @@ public class EnemyAttackAnimation : MonoBehaviour
         _transform = transform;
     }
     
-    public void AttackTo(Vector3 targetPosition)
+    public void AttackTo(Vector3 targetPosition, Action onComplete = null)
     {
         _jumpTween?.Kill();
         
@@ -26,6 +27,6 @@ public class EnemyAttackAnimation : MonoBehaviour
         var path = new Vector3[] { startPosition, peekPosition, endPosition };
 
         _jumpTween = _transform.DOPath(path, FlyDuration, PathType.CatmullRom, PathMode.TopDown2D)
-            .SetEase(FlyEaseType);
+            .SetEase(FlyEaseType).OnComplete(()=> onComplete?.Invoke());
     }
 }
