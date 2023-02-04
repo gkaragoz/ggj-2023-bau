@@ -28,10 +28,16 @@ namespace Main_Character
                 character.flipX = false;
             }
             
-            else if (direction.x is > -.5F and < .5F && direction.y is > 0 and <= 1F)
+            else if (direction.x is > -.5F and < 0F && direction.y is > 0 and <= 1F)
             {
                 character.sprite = upRenderer;
                 character.flipX = false;
+            }
+            
+            else if (direction.x is > 0F and < 0.5F && direction.y is > 0 and <= 1F)
+            {
+                character.sprite = upRenderer;
+                character.flipX = true;
             }
             
             else if (direction.x is > -.5F and < .5F && direction.y is >= -1F and < 0F)
