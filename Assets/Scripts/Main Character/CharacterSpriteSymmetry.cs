@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Main_Character
 {
+    
     public class CharacterSpriteSymmetry : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer characterRenderer;
