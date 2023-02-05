@@ -60,7 +60,7 @@ namespace UI
             MaskRectTransform.anchoredPosition = worldObjectScreenPosition + (Vector2.up * 50);
             
             CanvasGroup.DOFade(1, 0.25f)
-                .SetDelay(1f)
+                .SetDelay(0.5f)
                 .OnComplete(StartSequence);
         }
 
