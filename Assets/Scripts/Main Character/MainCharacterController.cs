@@ -5,6 +5,7 @@ using Gameplay;
 using Samples.Basic.Scripts;
 using UI;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Main_Character
 {
@@ -25,7 +26,6 @@ namespace Main_Character
         [SerializeField] private float dashDistance;
         [SerializeField] private float dashCooldown;
         [SerializeField] private Rigidbody2D rigidbody2d;
-        [SerializeField] private CharacterSpriteSymmetry characterSpriteSymmetry;
         [SerializeField] private HealthBar healthBar;
         [SerializeField] private CharacterWeaponController weaponController;
 
@@ -58,6 +58,7 @@ namespace Main_Character
                 if(enemy.CurrentState != EnemyState.Attack) return; 
                 
                 _currentHealth = Mathf.Clamp(_currentHealth - enemy.DamageAmount, 0F, health);
+                AudioManager.Instance.Play($"Get Hit Type{Random.Range(1, 4)}");
 
                 if (_currentHealth == 0)
                 {
@@ -75,7 +76,7 @@ namespace Main_Character
         private void HandleMovement()
         {
             if(!CanMove()) return;
-            
+
             var horizontal = Input.GetAxisRaw("Horizontal");
             var vertical = Input.GetAxisRaw("Vertical");
             var direction = new Vector2(horizontal, vertical);
@@ -89,6 +90,16 @@ namespace Main_Character
             else
             {
                 targetVelocity = direction * speed;
+            }
+
+            if (direction.magnitude < .01F)
+            {
+                AudioManager.Instance.Stop("Walk SFX");
+            }
+
+            else
+            {
+                AudioManager.Instance.Play("Walk SFX");
             }
 
             rigidbody2d.velocity = Vector3.SmoothDamp(rigidbody2d.velocity, targetVelocity, ref _refVel, .05F);
