@@ -8,7 +8,7 @@ namespace Gameplay
         public static Action OnStart;
         public static Action OnPause;
         public static Action OnComplete;
-
+        
         private void Start()
         {
             OnStart?.Invoke();

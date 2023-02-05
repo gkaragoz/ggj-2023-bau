@@ -1,10 +1,11 @@
 ﻿using Gameplay;
+using Samples.Basic.Scripts;
 using TMPro;
 using UnityEngine;
 
 namespace UI
 {
-    public class GameplayTimerScore : MonoBehaviour
+    public class GameplayTimerScore : Singleton<GameplayTimerScore>
     {
         [SerializeField] private TextMeshProUGUI ScoreText;
         [SerializeField] private TextMeshProUGUI TimerText;
@@ -21,7 +22,7 @@ namespace UI
             TimerManager.OnTimeChangeAsFormattedString -= OnTimeChangeAsFormattedString;
         }
 
-        private void SetScore(int score)
+        public void SetScore(int score)
         {
             ScoreText.text = $"SCORE: <color=#A0D235>{score}</color>";
         }

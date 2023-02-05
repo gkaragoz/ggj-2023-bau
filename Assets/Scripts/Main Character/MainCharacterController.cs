@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using Enemy;
 using Gameplay;
 using Samples.Basic.Scripts;
@@ -7,21 +8,34 @@ using UnityEngine;
 
 namespace Main_Character
 {
+    public enum CharacterState
+    {
+        Idle,
+        Attack,
+        Dash,
+        Walk,
+        Death
+    }
+    
     public class MainCharacterController : Singleton<MainCharacterController>
     {
         [SerializeField] private float health;
         [SerializeField] private float speed;
+        [SerializeField] private float dashSpeed;
+        [SerializeField] private float dashDistance;
+        [SerializeField] private float dashCooldown;
         [SerializeField] private Rigidbody2D rigidbody2d;
         [SerializeField] private CharacterSpriteSymmetry characterSpriteSymmetry;
         [SerializeField] private HealthBar healthBar;
         [SerializeField] private CharacterWeaponController weaponController;
-        
+
+        public int Score { get; private set; }
+        public CharacterState CurrentState { get; private set; } = CharacterState.Idle;
         public static Action<float> OnReceiveHit;
         public static Action OnDeath;
         
         private Vector3 _refVel = Vector3.zero;
         private float _currentHealth;
-        private bool _isDead;
 
         private void Awake()
         {
@@ -29,9 +43,15 @@ namespace Main_Character
             healthBar.SetHealth(health, health);
         }
 
+        public void AddScore(int score)
+        {
+            Score += score;
+            ScoreIndicatorFactory.Instance.Create(score);
+        }
+
         private void OnTriggerEnter2D(Collider2D col)
         {
-            if(_isDead) return;
+            if(CurrentState is CharacterState.Death or CharacterState.Dash) return;
             
             if (col.TryGetComponent(out EnemyController enemy))
             {
@@ -43,7 +63,7 @@ namespace Main_Character
                 {
                     GameManager.OnComplete?.Invoke();
                     OnDeath?.Invoke();
-                    _isDead = true;
+                    CurrentState = CharacterState.Death;
                     return;
                 }
                 
@@ -54,6 +74,8 @@ namespace Main_Character
 
         private void HandleMovement()
         {
+            if(!CanMove()) return;
+            
             var horizontal = Input.GetAxisRaw("Horizontal");
             var vertical = Input.GetAxisRaw("Vertical");
             var direction = new Vector2(horizontal, vertical);
@@ -72,9 +94,40 @@ namespace Main_Character
             rigidbody2d.velocity = Vector3.SmoothDamp(rigidbody2d.velocity, targetVelocity, ref _refVel, .05F);
         }
 
+        private void HandleDash()
+        {
+            if (CanDash())
+            {
+                if (Input.GetKeyDown(KeyCode.LeftControl))
+                {
+                    CurrentState = CharacterState.Dash;
+                    var timer = 0F;
+                    DOTween.To(() => timer, x => timer = x, 1F, 1F / dashSpeed)
+                        .OnUpdate(()=> rigidbody2d.velocity += CharacterDirectionController.Instance.CurrentDirectionVector * dashDistance)
+                        .SetEase(Ease.OutExpo)
+                        .OnComplete(() => { DOVirtual.DelayedCall(dashCooldown, () => CurrentState = CharacterState.Idle); });
+                }
+            }
+        }
+
+        private bool CanDash()
+        {
+            return CurrentState != CharacterState.Death && 
+                   CurrentState != CharacterState.Attack && 
+                   CurrentState != CharacterState.Dash; 
+        }
+
         private bool CanAttack()
         {
-            return !_isDead && !weaponController.IsSwingAnimationPlaying;
+            return CurrentState != CharacterState.Death && 
+                   CurrentState != CharacterState.Attack && 
+                   CurrentState != CharacterState.Dash;
+        }
+
+        private bool CanMove()
+        {
+            return CurrentState != CharacterState.Death && 
+                   CurrentState != CharacterState.Dash;
         }
 
         private void HandleAttack()
@@ -84,14 +137,31 @@ namespace Main_Character
                 if (CanAttack())
                 {
                     weaponController.SwingWeapon();
+                    CurrentState = CharacterState.Attack;
                 }
             }
+        }
+
+        private void OnCompleteAttackAnimation()
+        {
+            CurrentState = CharacterState.Idle;
         }
 
         private void Update()
         {
             HandleMovement();
             HandleAttack();
+            HandleDash();
+        }
+
+        private void OnEnable()
+        {
+            weaponController.OnCompleteAttackAnimation += OnCompleteAttackAnimation;
+        }
+
+        private void OnDisable()
+        {
+            weaponController.OnCompleteAttackAnimation -= OnCompleteAttackAnimation;
         }
     }
 }

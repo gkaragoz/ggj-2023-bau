@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
+using Main_Character;
 using Samples.Basic.Scripts;
+using UI;
 using UnityEngine;
 
 namespace Gameplay
@@ -35,6 +37,11 @@ namespace Gameplay
                 yield return new WaitForSeconds(1F);
                 PassingSeconds++;
                 CountTime(PassingSeconds);
+
+                if (PassingSeconds % 2 == 0)
+                {
+                    MainCharacterController.Instance.AddScore(1);
+                }
             }
         }
         

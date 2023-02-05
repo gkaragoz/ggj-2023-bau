@@ -122,6 +122,7 @@ namespace Enemy
             
             if (_health == 0)
             {
+                MainCharacterController.Instance.AddScore(reward);
                 _hitAnimation.Clear();;
                 _dieAnimation.Die(Destroy);
                 CurrentState = EnemyState.Death;

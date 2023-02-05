@@ -19,6 +19,8 @@ namespace Main_Character
     public class CharacterDirectionController : Singleton<CharacterDirectionController>
     {
         public Direction CurrentDirection { get; private set; } = Direction.Right;
+        public Vector2 CurrentDirectionVector { get; private set; }
+        
         public static Action<Direction> OnChangeDirection;
 
         private Camera _characterCamera;
@@ -39,44 +41,44 @@ namespace Main_Character
         {
             var playerPosition = transform.position;
             var inputPosition = (Vector2)_characterCamera.ScreenToWorldPoint(Input.mousePosition);
-            var direction = (inputPosition - new Vector2(playerPosition.x, playerPosition.y)).normalized;
-
-            if (direction.x is > -.25F and < .25F && direction.y is > 0F and < 1F)
+            CurrentDirectionVector = (inputPosition - new Vector2(playerPosition.x, playerPosition.y)).normalized;
+            
+            if (CurrentDirectionVector.x is > -.25F and < .25F && CurrentDirectionVector.y is > 0F and < 1F)
             {
                 ChangeDirection(Direction.Up);
             }
             
-            else if (direction.x is > -1F and < -.25F && direction.y is > .25F and < 1F)
+            else if (CurrentDirectionVector.x is > -1F and < -.25F && CurrentDirectionVector.y is > .25F and < 1F)
             {
                 ChangeDirection(Direction.UpLeft);
             }
             
-            else if (direction.x is > .25F and < 1F && direction.y is > .25F and < 1F)
+            else if (CurrentDirectionVector.x is > .25F and < 1F && CurrentDirectionVector.y is > .25F and < 1F)
             {
                 ChangeDirection(Direction.UpRight);
             }
             
-            else if (direction.x is >= -1F and < 0F && direction.y is > -.25F and < .25F)
+            else if (CurrentDirectionVector.x is >= -1F and < 0F && CurrentDirectionVector.y is > -.25F and < .25F)
             {
                 ChangeDirection(Direction.Left);
             }
             
-            else if (direction.x is > 0F and <= 1F && direction.y is > -.25F and < .25F)
+            else if (CurrentDirectionVector.x is > 0F and <= 1F && CurrentDirectionVector.y is > -.25F and < .25F)
             {
                 ChangeDirection(Direction.Right);
             }
             
-            else if (direction.x is > -.25F and < .25F && direction.y is > -1F and < 0F)
+            else if (CurrentDirectionVector.x is > -.25F and < .25F && CurrentDirectionVector.y is > -1F and < 0F)
             {
                 ChangeDirection(Direction.Down);
             }
             
-            else if (direction.x is > -1F and < -.25F && direction.y is > -1F and < -.25F)
+            else if (CurrentDirectionVector.x is > -1F and < -.25F && CurrentDirectionVector.y is > -1F and < -.25F)
             {
                 ChangeDirection(Direction.DownLeft);
             }
             
-            else if (direction.x is > .25F and < 1F && direction.y is > -1F and < -.25F)
+            else if (CurrentDirectionVector.x is > .25F and < 1F && CurrentDirectionVector.y is > -1F and < -.25F)
             {
                 ChangeDirection(Direction.DownRight);
             }

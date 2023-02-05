@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Main_Character;
 using Samples.Basic.Scripts;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -41,13 +41,13 @@ namespace UI
             Destroy(obj.gameObject);
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.KeypadPlus))
-            {
-                Create(10);
-            }
-        }
+        // private void Update()
+        // {
+        //     if (Input.GetKeyDown(KeyCode.KeypadPlus))
+        //     {
+        //         Create(10);
+        //     }
+        // }
 
         public void Create(int score)
         {
@@ -56,6 +56,7 @@ namespace UI
             damageIndicator.Animate(score, EndRectTransform, StartRectTransform, (element) =>
             {
                 _pool.Release(element);
+                GameplayTimerScore.Instance.SetScore(MainCharacterController.Instance.Score);
             });
         }
     }

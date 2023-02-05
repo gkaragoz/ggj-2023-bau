@@ -736,6 +736,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1000
   speed: 8
+  dashSpeed: 15
+  dashDistance: 0.3
+  dashCooldown: 0.25
   rigidbody2d: {fileID: 771270897961618240}
   characterSpriteSymmetry: {fileID: 771270897961618237}
   healthBar: {fileID: 5568739954313126471}

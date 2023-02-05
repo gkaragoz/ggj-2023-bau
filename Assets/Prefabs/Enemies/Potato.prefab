@@ -254,7 +254,7 @@ MonoBehaviour:
   damageAmount: 10
   attackCooldown: 3
   hitLimit: 5
-  reward: 10
+  reward: 25
 --- !u!114 &3622456787350151963
 MonoBehaviour:
   m_ObjectHideFlags: 0

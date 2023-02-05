@@ -29,6 +29,8 @@ namespace Main_Character
         [SerializeField] private List<WeaponDirectionData> directionDataset;
 
         public bool IsSwingAnimationPlaying { get; private set; }
+
+        public Action OnCompleteAttackAnimation;
         
         private Tween _rotationAnimation, _moveAnimation;
         private static readonly int ShouldAttack = Animator.StringToHash("shouldAttack");
@@ -68,6 +70,7 @@ namespace Main_Character
         public void OnCompleteSwingAnimation()
         {
             IsSwingAnimationPlaying = false;
+            OnCompleteAttackAnimation?.Invoke();
         }
 
         private void OnEnable()
