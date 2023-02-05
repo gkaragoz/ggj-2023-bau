@@ -20,7 +20,8 @@ namespace UI
         [SerializeField] private TextMeshProUGUI MessageText;
         [SerializeField] private TextMeshProUGUI ScoreText;
         [SerializeField] private TextMeshProUGUI TimeAliveText;
-
+        [SerializeField] private TextMeshProUGUI HighScoreText;
+        
         [SerializeField] private RectTransform FoodsTargetRect;
         [SerializeField] private CanvasGroup KidCanvasGroup;
         [SerializeField] private RectTransform KidHappyFace;
@@ -60,6 +61,8 @@ namespace UI
 
             MaskRectTransform.anchoredPosition = worldObjectScreenPosition + (Vector2.up * 50);
             
+            SetScoreObjects();
+            
             CanvasGroup.DOFade(1, 0.25f)
                 .SetDelay(0.5f)
                 .OnComplete(StartSequence);
@@ -67,9 +70,7 @@ namespace UI
 
         private void StartSequence()
         {
-            GetComponent<GraphicRaycaster>().enabled = true;
             MenuCanvasGroup.alpha = 0;
-            SetScoreObjects();
 
             KidCanvasGroup.DOFade(1, 0.5f)
                 .OnComplete(() =>
@@ -79,6 +80,7 @@ namespace UI
                         KidCanvasGroup.transform.DOScale(Vector3.one * 0.5f, 0.5f)
                             .OnComplete(() =>
                             {
+                                GetComponent<GraphicRaycaster>().enabled = true;
                                 MenuCanvasGroup.DOFade(1, 0.25f);
                             });
                     });
@@ -118,7 +120,9 @@ namespace UI
             
             ScoreText.text = score.ToString();
             TimeAliveText.text = TimerManager.Instance.TimeText;
-            
+
+            var isHighScore = score > PlayerPrefs.GetInt("PLAYER_HIGH_SCORE", 0);
+            HighScoreText.gameObject.SetActive(isHighScore);
             KidCanvasGroup.gameObject.SetActive(true);
         }
 

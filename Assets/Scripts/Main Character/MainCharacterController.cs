@@ -63,6 +63,7 @@ namespace Main_Character
                 if (_currentHealth == 0)
                 {
                     GameManager.OnComplete?.Invoke();
+                    CalculateHighScore();
                     OnDeath?.Invoke();
                     CurrentState = CharacterState.Death;
                     healthBar.Hide();
@@ -72,6 +73,15 @@ namespace Main_Character
                 
                 OnReceiveHit?.Invoke(enemy.DamageAmount);
                 healthBar.TakeDamage((int)enemy.DamageAmount, col.transform.position, _currentHealth, health);
+            }
+        }
+
+        private void CalculateHighScore()
+        {
+            var lastScore = PlayerPrefs.GetInt("PLAYER_HIGH_SCORE", 0);
+            if (Score > lastScore)
+            {
+                PlayerPrefs.SetInt("PLAYER_HIGH_SCORE", Score);
             }
         }
 
