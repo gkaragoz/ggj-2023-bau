@@ -111,7 +111,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 95f3cbf6da2e617418c2fddd775ae8d3, type: 3}
   - {fileID: 21300000, guid: cc856a449e27811468ba8f3cc70dc9c6, type: 3}
   FadeInDuration: 0.25
-  ScaleInDuration: 0.5
+  ScaleInDuration: 0.25
 --- !u!1 &1419584466591520967
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ce4bcd1c91274408f5d15a99901c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScaleUpDuration: 0.5
+  ScaleUpDuration: 0.25
   CharacterSpriteRenderer: {fileID: 2714941272971728470}
   CharacterShadowSpriteRenderer: {fileID: 8274048851318661802}
   Blood: {fileID: 4702990557601041438}

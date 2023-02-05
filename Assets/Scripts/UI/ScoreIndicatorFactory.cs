@@ -33,6 +33,7 @@ namespace UI
 
         private void OnReturnToPool(ScoreIndicator obj)
         {
+            obj.transform.localScale = Vector3.one;
             obj.gameObject.SetActive(false);
         }
 

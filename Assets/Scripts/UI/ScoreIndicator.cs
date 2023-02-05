@@ -21,6 +21,8 @@ namespace UI
 
         public void Animate(int score, RectTransform endTransform, RectTransform startTransform, Action<ScoreIndicator> onCompleted)
         {
+            transform.localScale = Vector3.one;
+            
             Text.text = $"+{score}";
 
             SelfRectTransform.anchoredPosition = startTransform.anchoredPosition;
@@ -42,7 +44,8 @@ namespace UI
             SelfRectTransform.DOKill();
 
             Text.color = _originalColor;
-            
+
+            gameObject.transform.localScale = Vector3.one;
             gameObject.SetActive(false);
         }
     }
