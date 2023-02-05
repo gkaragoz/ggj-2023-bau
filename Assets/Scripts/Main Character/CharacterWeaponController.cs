@@ -64,7 +64,7 @@ namespace Main_Character
 
         public void SwingWeapon()
         {
-            AudioManager.Instance.Play($"Swing Type{Random.Range(1, 3)}");
+            AudioManager.Instance.Play($"Swing Type1");
             weaponAnimator.SetInteger(AttackType, (int)CharacterDirectionController.Instance.CurrentDirection);
             weaponAnimator.SetTrigger(ShouldAttack);
             IsSwingAnimationPlaying = true;

@@ -269,13 +269,6 @@ MonoBehaviour:
     source: {fileID: 0}
     playOnAwake: 0
     loop: 0
-  - name: Swing Type2
-    clip: {fileID: 8300000, guid: 59d09d975f545d4459d039d294b880b5, type: 3}
-    volume: 0.5
-    pitch: 1
-    source: {fileID: 0}
-    playOnAwake: 0
-    loop: 0
   - name: Get Hit Type1
     clip: {fileID: 8300000, guid: c459849537adc4347af2fe09bf494e0b, type: 3}
     volume: 0.035
@@ -299,8 +292,15 @@ MonoBehaviour:
     loop: 0
   - name: Gameplay SFX
     clip: {fileID: 8300000, guid: 30cce559291ef634c9d149814b43d864, type: 3}
-    volume: 0.035
+    volume: 0.005
     pitch: 1
+    source: {fileID: 0}
+    playOnAwake: 0
+    loop: 1
+  - name: Walk SFX
+    clip: {fileID: 8300000, guid: 6d07165cde0bb56448c6d2ae66f19b1c, type: 3}
+    volume: 0.1
+    pitch: 1.5
     source: {fileID: 0}
     playOnAwake: 0
     loop: 1

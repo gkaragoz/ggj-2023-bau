@@ -46,8 +46,10 @@ namespace Gameplay
         public void Play(string name)
         {
             var s = Array.Find(sounds, sound => sound.name == name);
-            if (s != null)
+            if (s != null && !s.source.isPlaying)
+            {
                 s.source.Play();
+            }
         }
 
         public void AdjustVolume(string name, float value)
