@@ -23,7 +23,7 @@ namespace Gameplay
 
         public EnemyController RandomEnemy()
         {
-            return enemies[Random.Range(0, enemies.Count - 1)];
+            return enemies[Random.Range(0, enemies.Count)];
         }
     }
     

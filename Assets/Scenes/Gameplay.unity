@@ -1394,18 +1394,18 @@ MonoBehaviour:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 5
-        inSlope: -0.049000002
-        outSlope: -0.049000002
+        value: 1.5
+        inSlope: -0.004166667
+        outSlope: -0.004166667
         tangentMode: 34
         weightedMode: 0
         inWeight: 0
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 100
-        value: 0.1
-        inSlope: -0.049000002
-        outSlope: -0.049000002
+        time: 60
+        value: 1.25
+        inSlope: -0.004166667
+        outSlope: -0.004166667
         tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
@@ -1417,6 +1417,157 @@ MonoBehaviour:
     - {fileID: 2146637185}
     enemies:
     - {fileID: 982149742, guid: cd5f8b729c07b4976a7a4b1779238859, type: 3}
+  - waveName: Wave 2
+    difficultyCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1.25
+        inSlope: -0.004166667
+        outSlope: -0.004166667
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 60
+        value: 1
+        inSlope: -0.004166667
+        outSlope: -0.004166667
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+    spawnAreas:
+    - {fileID: 2146637185}
+    enemies:
+    - {fileID: 982149742, guid: cd5f8b729c07b4976a7a4b1779238859, type: 3}
+    - {fileID: 9157428236542151988, guid: a9cd4ef8519cc9449b2e062dc8fee131, type: 3}
+  - waveName: Wave 3
+    difficultyCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1.25
+        inSlope: -0.004166667
+        outSlope: -0.004166667
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 60
+        value: 1
+        inSlope: -0.004166667
+        outSlope: -0.004166667
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+    spawnAreas:
+    - {fileID: 2146637185}
+    enemies:
+    - {fileID: 9157428236542151988, guid: a9cd4ef8519cc9449b2e062dc8fee131, type: 3}
+  - waveName: Wave 4
+    difficultyCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.85
+        inSlope: -0.004166667
+        outSlope: -0.004166667
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 60
+        value: 0.6
+        inSlope: -0.004166667
+        outSlope: -0.004166667
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+    spawnAreas:
+    - {fileID: 2146637185}
+    enemies:
+    - {fileID: 9157428236542151988, guid: a9cd4ef8519cc9449b2e062dc8fee131, type: 3}
+    - {fileID: 8599139064280640734, guid: 3aa341eb30721694288be32ea8d5864f, type: 3}
+  - waveName: Wave 5
+    difficultyCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.6
+        inSlope: -0.0033333336
+        outSlope: -0.0033333336
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 60
+        value: 0.4
+        inSlope: -0.0033333336
+        outSlope: -0.0033333336
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+    spawnAreas:
+    - {fileID: 2146637185}
+    enemies:
+    - {fileID: 8599139064280640734, guid: 3aa341eb30721694288be32ea8d5864f, type: 3}
+  - waveName: Wave 6
+    difficultyCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.75
+        inSlope: -0.008333334
+        outSlope: -0.008333334
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 60
+        value: 0.25
+        inSlope: -0.008333334
+        outSlope: -0.008333334
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+    spawnAreas:
+    - {fileID: 2146637185}
+    enemies:
+    - {fileID: 8599139064280640734, guid: 3aa341eb30721694288be32ea8d5864f, type: 3}
+    - {fileID: 9157428236542151988, guid: a9cd4ef8519cc9449b2e062dc8fee131, type: 3}
+    - {fileID: 982149742, guid: cd5f8b729c07b4976a7a4b1779238859, type: 3}
+    - {fileID: 8599139064280640734, guid: 3aa341eb30721694288be32ea8d5864f, type: 3}
+    - {fileID: 9157428236542151988, guid: a9cd4ef8519cc9449b2e062dc8fee131, type: 3}
 --- !u!212 &2146637185 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1572276473713758708, guid: bf0dc8910c6204f4d99f775bfefa0d39, type: 3}

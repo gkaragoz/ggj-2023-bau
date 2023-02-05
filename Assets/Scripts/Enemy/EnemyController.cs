@@ -17,7 +17,6 @@ namespace Enemy
     
     public class EnemyController : MonoBehaviour
     {
-        [SerializeField] private DieAnimation dieAnimation;
         [SerializeField] private Vector2 speedInterval;
         [SerializeField] private float damageAmount;
         [SerializeField] private float attackCooldown;
@@ -27,6 +26,7 @@ namespace Enemy
         private Transform _current;
         private Transform _target;
         private NavMeshAgent _agent;
+        private DieAnimation _dieAnimation;
         private EnemyAttackAnimation _attackAnimation;
         private TakeHitAnimation _hitAnimation;
         private bool _canAttack = true;
@@ -43,6 +43,7 @@ namespace Enemy
             _current = transform;
             _attackAnimation = GetComponent<EnemyAttackAnimation>();
             _hitAnimation = GetComponent<TakeHitAnimation>();
+            _dieAnimation = GetComponent<DieAnimation>();
             _target = MainCharacterController.Instance.transform;
             _agent = GetComponent<NavMeshAgent>();
             _agent.updateRotation = false;
@@ -122,7 +123,7 @@ namespace Enemy
             if (_health == 0)
             {
                 _hitAnimation.Clear();;
-                dieAnimation.Die(Destroy);
+                _dieAnimation.Die(Destroy);
                 CurrentState = EnemyState.Death;
             }
         }

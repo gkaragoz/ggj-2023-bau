@@ -222,9 +222,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0208408662350704f8361f6c38a1a766, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedInterval: {x: 4, y: 7}
   damageAmount: 10
   attackCooldown: 3
-  speedInterval: {x: 3, y: 6}
+  hitLimit: 4
+  reward: 5
 --- !u!114 &932976172389212521
 MonoBehaviour:
   m_ObjectHideFlags: 0
