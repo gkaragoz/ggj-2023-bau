@@ -6,7 +6,7 @@ namespace Main_Character
 {
     public enum Direction
     {
-        Up,
+        Up = 0,
         UpRight,
         UpLeft,
         Left,

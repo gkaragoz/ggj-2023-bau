@@ -31,7 +31,9 @@ namespace Main_Character
         public bool IsSwingAnimationPlaying { get; private set; }
         
         private Tween _rotationAnimation, _moveAnimation;
-        
+        private static readonly int ShouldAttack = Animator.StringToHash("shouldAttack");
+        private static readonly int AttackType = Animator.StringToHash("attackType");
+
         private void UpdateWeaponChildSocket(Direction direction)
         {
             _rotationAnimation?.Kill();
@@ -58,7 +60,8 @@ namespace Main_Character
 
         public void SwingWeapon()
         {
-            weaponAnimator.Play("Swing");
+            weaponAnimator.SetInteger(AttackType, (int)CharacterDirectionController.Instance.CurrentDirection);
+            weaponAnimator.SetTrigger(ShouldAttack);
             IsSwingAnimationPlaying = true;
         }
 
