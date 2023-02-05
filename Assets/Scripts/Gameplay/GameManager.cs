@@ -12,6 +12,7 @@ namespace Gameplay
         private void Start()
         {
             OnStart?.Invoke();
+            AudioManager.Instance.Play("Gameplay SFX");
         }
     }
 }

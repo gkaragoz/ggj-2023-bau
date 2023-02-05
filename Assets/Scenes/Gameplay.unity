@@ -297,6 +297,13 @@ MonoBehaviour:
     source: {fileID: 0}
     playOnAwake: 0
     loop: 0
+  - name: Gameplay SFX
+    clip: {fileID: 8300000, guid: 30cce559291ef634c9d149814b43d864, type: 3}
+    volume: 0.035
+    pitch: 1
+    source: {fileID: 0}
+    playOnAwake: 0
+    loop: 1
 --- !u!4 &332815297
 Transform:
   m_ObjectHideFlags: 0
