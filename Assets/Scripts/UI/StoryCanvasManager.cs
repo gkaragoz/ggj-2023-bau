@@ -1,7 +1,9 @@
 ﻿using System;
 using DG.Tweening;
+using Gameplay;
 using Samples.Basic.Scripts;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace UI
@@ -58,6 +60,9 @@ namespace UI
                 SelfCanvasGroup.alpha = 0;
                 
                 OnStoryCompleted?.Invoke();
+                SceneManager.LoadScene("Gameplay");
+                AudioManager.Instance.Stop("Story SFX");
+                AudioManager.Instance.Stop("Menu SFX");
             }
             else
             {

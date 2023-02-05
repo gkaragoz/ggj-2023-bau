@@ -30,6 +30,7 @@ namespace Gameplay
 
         protected void Awake()
         {
+            DontDestroyOnLoad(gameObject);
             foreach (var sound in sounds)
             {
                 sound.source = gameObject.AddComponent<AudioSource>();
@@ -46,9 +47,10 @@ namespace Gameplay
         public void Play(string name)
         {
             var s = Array.Find(sounds, sound => sound.name == name);
-            if (s != null && !s.source.isPlaying)
+            if (s != null)
             {
-                s.source.Play();
+                if(!s.source.isPlaying || s.name == "Button SFX")
+                    s.source.Play();
             }
         }
 

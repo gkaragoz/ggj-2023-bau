@@ -5,6 +5,7 @@ using Gameplay;
 using Main_Character;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI
 {
@@ -66,6 +67,7 @@ namespace UI
 
         private void StartSequence()
         {
+            GetComponent<GraphicRaycaster>().enabled = true;
             MenuCanvasGroup.alpha = 0;
             SetScoreObjects();
 

@@ -66,6 +66,7 @@ namespace Main_Character
                     OnDeath?.Invoke();
                     CurrentState = CharacterState.Death;
                     healthBar.Hide();
+                    rigidbody2d.velocity = Vector2.zero;
                     return;
                 }
                 

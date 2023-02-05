@@ -1,5 +1,6 @@
 ﻿using System;
 using Samples.Basic.Scripts;
+using UnityEngine.SceneManagement;
 
 namespace Gameplay
 {
@@ -13,6 +14,17 @@ namespace Gameplay
         {
             OnStart?.Invoke();
             AudioManager.Instance.Play("Gameplay SFX");
+        }
+
+        public void Restart()
+        {
+            SceneManager.LoadScene("Gameplay");
+        }
+
+        public void Menu()
+        {
+            AudioManager.Instance.Stop("Gameplay SFX");
+            SceneManager.LoadScene("Main");
         }
     }
 }
