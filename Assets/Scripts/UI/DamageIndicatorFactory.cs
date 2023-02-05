@@ -16,7 +16,7 @@ namespace UI
         private void Awake()
         {
             _pool = new ObjectPool<DamageIndicator>(CreatePooledItem, OnTakeFromPool, OnReturnToPool,
-                OnDestroyPoolObject, false, 10, _maxPoolSize);
+                OnDestroyPoolObject, true, 10, _maxPoolSize);
         }
 
         private DamageIndicator CreatePooledItem()
