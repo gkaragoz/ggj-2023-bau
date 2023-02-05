@@ -28,7 +28,7 @@ namespace Gameplay
     {
         public Sound[] sounds;
 
-        protected void Start()
+        protected void Awake()
         {
             foreach (var sound in sounds)
             {
