@@ -1,8 +1,6 @@
 using System.Collections;
 using Animations;
-using DG.Tweening;
 using Main_Character;
-using UI;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -13,12 +11,12 @@ namespace Enemy
     {
         Walk,
         Attack,
-        Death
+        Death,
+        GetHit
     }
     
     public class EnemyController : MonoBehaviour
     {
-        [SerializeField] private TakeHitAnimation hitAnimation;
         [SerializeField] private DieAnimation dieAnimation;
         [SerializeField] private Vector2 speedInterval;
         [SerializeField] private float damageAmount;
@@ -30,6 +28,7 @@ namespace Enemy
         private Transform _target;
         private NavMeshAgent _agent;
         private EnemyAttackAnimation _attackAnimation;
+        private TakeHitAnimation _hitAnimation;
         private bool _canAttack = true;
         private YieldInstruction _attackCooldown;
         private int _health;
@@ -43,6 +42,7 @@ namespace Enemy
         {
             _current = transform;
             _attackAnimation = GetComponent<EnemyAttackAnimation>();
+            _hitAnimation = GetComponent<TakeHitAnimation>();
             _target = MainCharacterController.Instance.transform;
             _agent = GetComponent<NavMeshAgent>();
             _agent.updateRotation = false;
@@ -59,7 +59,7 @@ namespace Enemy
         {
             switch (CurrentState)
             {
-                case EnemyState.Death or EnemyState.Attack:
+                case EnemyState.Death or EnemyState.Attack or EnemyState.GetHit:
                     break;
                 case EnemyState.Walk:
                 {
@@ -76,8 +76,11 @@ namespace Enemy
                         _agent.isStopped = true;
                         _attackAnimation.AttackTo(_target.position, () =>
                         {
-                            _agent.isStopped = false;
-                            CurrentState = EnemyState.Walk;
+                            if (_agent.isOnNavMesh && _agent.enabled)
+                            {
+                                _agent.isStopped = false;
+                                CurrentState = EnemyState.Walk;
+                            }
                         });
                         
                         StartCoroutine(AttackCooldown());
@@ -102,22 +105,25 @@ namespace Enemy
         {
             if (_health == 0) return;
             if (_isAttackable == false) return;
-            _isAttackable = false;
-            DOTween.Kill(transform);
-            CurrentState = EnemyState.Walk;
+            
             _health--;
+            _health = _health < 0 ? 0 : _health;
+            CurrentState = EnemyState.GetHit;
 
-            hitAnimation.TakeHit(1, hitPoint, () =>
+            _isAttackable = false;
+            _attackAnimation.Clear(true);
+            _hitAnimation.TakeHit(1, hitPoint, () =>
             {
                 _isAttackable = _health != 0;;
+                CurrentState = EnemyState.Walk;
+
             }, null, true);
             
             if (_health == 0)
             {
-                hitAnimation.Clear();;
+                _hitAnimation.Clear();;
                 dieAnimation.Die(Destroy);
                 CurrentState = EnemyState.Death;
-                return;
             }
         }
     }

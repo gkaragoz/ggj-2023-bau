@@ -127,7 +127,6 @@ GameObject:
   - component: {fileID: 8351679854119863858}
   - component: {fileID: 1762188989}
   - component: {fileID: 2143318976}
-  - component: {fileID: 982149743}
   - component: {fileID: 4835859037235111381}
   - component: {fileID: 4377960750079990358}
   m_Layer: 0
@@ -251,22 +250,6 @@ SortingGroup:
   m_SortingLayerID: 1101321149
   m_SortingLayer: 1
   m_SortingOrder: 0
---- !u!58 &982149743
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8351679854119863856}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.31}
-  serializedVersion: 2
-  m_Radius: 0.31
 --- !u!195 &4835859037235111381
 NavMeshAgent:
   m_ObjectHideFlags: 0

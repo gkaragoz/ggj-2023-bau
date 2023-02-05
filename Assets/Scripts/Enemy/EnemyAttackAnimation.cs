@@ -14,6 +14,7 @@ public class EnemyAttackAnimation : MonoBehaviour
     private Transform _transform;
     private Tween _jumpTween;
     private Tween _shadowTween;
+    private Action OnCompleteAttackAnimation;
 
     private void Awake()
     {
@@ -29,13 +30,14 @@ public class EnemyAttackAnimation : MonoBehaviour
         Vector2 startPosition = _transform.position;
         Vector2 endPosition = targetPosition;
         Vector2 peekPosition = ((endPosition + startPosition) * 0.5f) + Vector2.up * FlyHeight;
-
+        OnCompleteAttackAnimation = onComplete;
+        
         var path = new Vector3[] { startPosition, peekPosition, endPosition };
 
         _jumpTween = _transform.DOPath(path, FlyDuration, PathType.CatmullRom, PathMode.TopDown2D)
             .SetDelay(Random.Range(0.25f, 1f))
             .SetEase(FlyEaseType)
-            .OnComplete(()=> onComplete?.Invoke());
+            .OnComplete(()=> OnCompleteAttackAnimation?.Invoke());
     }
 
     private void UpdateShadow()
@@ -47,5 +49,17 @@ public class EnemyAttackAnimation : MonoBehaviour
             {
                 _shadowTween = ShadowSpriteRenderer.DOFade(1f, FlyDuration * 0.5f);
             });
+    }
+
+    public void Clear(bool callBack)
+    {
+        _jumpTween?.Kill();
+        _shadowTween?.Kill();
+        OnCompleteAttackAnimation?.Invoke();
+    }
+
+    private void OnDestroy()
+    {
+        Clear(false);
     }
 }

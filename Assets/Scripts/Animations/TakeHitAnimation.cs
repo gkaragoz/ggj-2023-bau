@@ -87,5 +87,10 @@ namespace Animations
             _colorTween?.Kill();
             _takeHitTween?.Kill();
         }
+
+        private void OnDestroy()
+        {
+            Clear();
+        }
     }
 }
