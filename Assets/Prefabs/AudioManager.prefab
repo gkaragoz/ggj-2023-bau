@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1096567764979348410
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1096567764979348420}
+  - component: {fileID: 1096567764979348421}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1096567764979348420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096567764979348410}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1096567764979348421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096567764979348410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24129b75450c9dd40a6470182aa4d47f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Hit Type1
+    clip: {fileID: 8300000, guid: c0f8431f01ca93a4398952cff6d894bd, type: 3}
+    volume: 0.1
+    pitch: 1
+    source: {fileID: 0}
+    playOnAwake: 0
+    loop: 0
+  - name: Hit Type2
+    clip: {fileID: 8300000, guid: c3e6b7454c2a268458f77a677b4a104e, type: 3}
+    volume: 0.1
+    pitch: 1
+    source: {fileID: 0}
+    playOnAwake: 0
+    loop: 0
+  - name: Hit Type3
+    clip: {fileID: 8300000, guid: d7ef17adbce90b94fbc892d33bb240ed, type: 3}
+    volume: 0.1
+    pitch: 1
+    source: {fileID: 0}
+    playOnAwake: 0
+    loop: 0
+  - name: Swing Type1
+    clip: {fileID: 8300000, guid: 7663e40995f0a5e479150632219b5abf, type: 3}
+    volume: 0.025
+    pitch: 1.25
+    source: {fileID: 0}
+    playOnAwake: 0
+    loop: 0
+  - name: Get Hit Type1
+    clip: {fileID: 8300000, guid: c459849537adc4347af2fe09bf494e0b, type: 3}
+    volume: 0.035
+    pitch: 1.1
+    source: {fileID: 0}
+    playOnAwake: 0
+    loop: 0
+  - name: Get Hit Type2
+    clip: {fileID: 8300000, guid: e53cc4e35723d4f4e8bbfd0c72c76ed1, type: 3}
+    volume: 0.035
+    pitch: 1.1
+    source: {fileID: 0}
+    playOnAwake: 0
+    loop: 0
+  - name: Get Hit Type3
+    clip: {fileID: 8300000, guid: cb9a3edaffc2c954f842fe6cd7c6a991, type: 3}
+    volume: 0.05
+    pitch: 0.5
+    source: {fileID: 0}
+    playOnAwake: 0
+    loop: 0
+  - name: Gameplay SFX
+    clip: {fileID: 8300000, guid: 30cce559291ef634c9d149814b43d864, type: 3}
+    volume: 0.005
+    pitch: 1
+    source: {fileID: 0}
+    playOnAwake: 0
+    loop: 1
+  - name: Walk SFX
+    clip: {fileID: 8300000, guid: 6d07165cde0bb56448c6d2ae66f19b1c, type: 3}
+    volume: 0.1
+    pitch: 1.5
+    source: {fileID: 0}
+    playOnAwake: 0
+    loop: 1
