@@ -1593,6 +1593,7 @@ MonoBehaviour:
   MessageText: {fileID: 1006571073}
   ScoreText: {fileID: 756589470}
   TimeAliveText: {fileID: 1887309722}
+  HighScoreText: {fileID: 993959204}
   FoodsTargetRect: {fileID: 1901217770}
   KidCanvasGroup: {fileID: 939063717}
   KidHappyFace: {fileID: 681211868}
@@ -1917,7 +1918,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &993959203
 RectTransform:
   m_ObjectHideFlags: 0

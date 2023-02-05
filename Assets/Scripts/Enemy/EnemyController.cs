@@ -105,7 +105,7 @@ namespace Enemy
             _canAttack = true;
         }
 
-        public void TakeHit(Vector3 hitPoint, float damage = 0)
+        public void TakeHit(Vector3 hitPoint, float damage = 0, bool shouldAddScore = true)
         {
             if (_health == 0) return;
             if (_isAttackable == false) return;
@@ -126,7 +126,10 @@ namespace Enemy
             
             if (_health == 0)
             {
-                MainCharacterController.Instance.AddScore(reward);
+                if (shouldAddScore)
+                {
+                    MainCharacterController.Instance.AddScore(reward);
+                }
                 _hitAnimation.Clear();;
                 _dieAnimation.Die(Destroy);
                 CurrentState = EnemyState.Death;
@@ -135,7 +138,7 @@ namespace Enemy
 
         private void StopEnemy()
         {
-            TakeHit(transform.position, health);
+            TakeHit(transform.position, health, false);
         }
         
         private void OnEnable()
