@@ -96,7 +96,7 @@ MonoBehaviour:
     loop: 0
   - name: Gameplay SFX
     clip: {fileID: 8300000, guid: 30cce559291ef634c9d149814b43d864, type: 3}
-    volume: 0.005
+    volume: 0.075
     pitch: 1
     source: {fileID: 0}
     playOnAwake: 0
@@ -105,6 +105,27 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 6d07165cde0bb56448c6d2ae66f19b1c, type: 3}
     volume: 0.1
     pitch: 1.5
+    source: {fileID: 0}
+    playOnAwake: 0
+    loop: 1
+  - name: Menu SFX
+    clip: {fileID: 8300000, guid: 9961af8fd23a2e0488f6fe3c9342719c, type: 3}
+    volume: 0.075
+    pitch: 1
+    source: {fileID: 0}
+    playOnAwake: 0
+    loop: 1
+  - name: Button SFX
+    clip: {fileID: 8300000, guid: 5e6c25f803c88f74e82e3660b5dc10c6, type: 3}
+    volume: 0.025
+    pitch: 0.75
+    source: {fileID: 0}
+    playOnAwake: 0
+    loop: 0
+  - name: Story SFX
+    clip: {fileID: 8300000, guid: 2090d7c095e810748a730974872eff4c, type: 3}
+    volume: 0.1
+    pitch: 1
     source: {fileID: 0}
     playOnAwake: 0
     loop: 1

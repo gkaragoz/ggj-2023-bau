@@ -121,8 +121,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3074692308346269031}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
-  Text: {fileID: 0}
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Gameplay.GameManager, Assembly-CSharp
+        m_MethodName: Menu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Text: {fileID: 7128901311769096797}
 --- !u!1 &6693458697176604182
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +201,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PLAY
+  m_text: MENU
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1607d5d8f7688a14a9e45a6b30f2865b, type: 2}
   m_sharedMaterial: {fileID: 6994182892911928513, guid: 1607d5d8f7688a14a9e45a6b30f2865b, type: 2}
@@ -198,8 +210,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4278415672
+  m_fontColor: {r: 0.21960784, g: 0.44313726, b: 0.011764706, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
