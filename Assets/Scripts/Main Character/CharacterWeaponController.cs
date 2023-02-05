@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using Enemy;
+using Gameplay;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Random = UnityEngine.Random;
 
 namespace Main_Character
 {
@@ -62,6 +64,7 @@ namespace Main_Character
 
         public void SwingWeapon()
         {
+            AudioManager.Instance.Play($"Swing Type{Random.Range(1, 3)}");
             weaponAnimator.SetInteger(AttackType, (int)CharacterDirectionController.Instance.CurrentDirection);
             weaponAnimator.SetTrigger(ShouldAttack);
             IsSwingAnimationPlaying = true;

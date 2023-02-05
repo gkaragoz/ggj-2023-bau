@@ -1,5 +1,6 @@
 using System.Collections;
 using Animations;
+using Gameplay;
 using Main_Character;
 using UnityEngine;
 using UnityEngine.AI;
@@ -113,6 +114,7 @@ namespace Enemy
 
             _isAttackable = false;
             _attackAnimation.Clear(true);
+            AudioManager.Instance.Play($"Hit Type{Random.Range(1, 4)}");
             _hitAnimation.TakeHit(1, hitPoint, () =>
             {
                 _isAttackable = _health != 0;;

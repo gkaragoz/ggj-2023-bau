@@ -5,6 +5,7 @@ using Gameplay;
 using Samples.Basic.Scripts;
 using UI;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Main_Character
 {
@@ -58,6 +59,7 @@ namespace Main_Character
                 if(enemy.CurrentState != EnemyState.Attack) return; 
                 
                 _currentHealth = Mathf.Clamp(_currentHealth - enemy.DamageAmount, 0F, health);
+                AudioManager.Instance.Play($"Get Hit Type{Random.Range(1, 4)}");
 
                 if (_currentHealth == 0)
                 {
