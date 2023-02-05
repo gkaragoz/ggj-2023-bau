@@ -11,7 +11,15 @@ namespace Main_Character
         [SerializeField] private Sprite upSideDirection;
         [SerializeField] private Sprite downDirection;
         [SerializeField] private Sprite downSideDirection;
+        [SerializeField] private Sprite deadSprite;
 
+        private void OnCharacterDead()
+        {
+            characterRenderer.sprite = deadSprite;
+            characterRenderer.flipX = false;
+            characterRenderer.flipY = false;
+        }
+        
         private void UpdateVisual(Direction direction)
         {
             switch (direction)
@@ -54,11 +62,13 @@ namespace Main_Character
         private void OnEnable()
         {
             CharacterDirectionController.OnChangeDirection += UpdateVisual;
+            MainCharacterController.OnDeath += OnCharacterDead;
         }
 
         private void OnDisable()
         {
             CharacterDirectionController.OnChangeDirection -= UpdateVisual;
+            MainCharacterController.OnDeath -= OnCharacterDead;
         }
     }
 }

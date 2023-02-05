@@ -65,6 +65,7 @@ namespace Main_Character
                     GameManager.OnComplete?.Invoke();
                     OnDeath?.Invoke();
                     CurrentState = CharacterState.Death;
+                    healthBar.Hide();
                     return;
                 }
                 

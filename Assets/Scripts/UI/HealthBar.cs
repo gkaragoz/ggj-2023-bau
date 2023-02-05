@@ -11,6 +11,7 @@ namespace UI
         [SerializeField] private RectTransform ParentRectTransform;
         [SerializeField] private Image HealthBarFillImage;
         [SerializeField] private Image HealthBarDamageIndicatorImage;
+        [SerializeField] private CanvasGroup CanvasGroup;
         
         [SerializeField] private float ShakeStrength = 1.05f;
         [SerializeField] private float ShakeDuration = 0.25f;
@@ -24,6 +25,11 @@ namespace UI
         private void Awake()
         {
             _parentScale = ParentRectTransform.localScale;
+        }
+
+        public void Hide()
+        {
+            CanvasGroup.DOFade(0F, .5F);
         }
 
         public void SetHealth(float currentHealth, float maxHealth)
