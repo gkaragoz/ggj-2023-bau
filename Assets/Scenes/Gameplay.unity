@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 485266459}
   - component: {fileID: 485266458}
   m_Layer: 5
-  m_Name: Damage Indicator Canvases
+  m_Name: Damage Indicator Factory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
