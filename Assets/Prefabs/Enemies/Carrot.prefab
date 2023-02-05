@@ -169,7 +169,7 @@ MonoBehaviour:
   speedInterval: {x: 3, y: 6}
   damageAmount: 10
   attackCooldown: 3
-  hitLimit: 2
+  health: 40
   reward: 5
 --- !u!114 &8351679854119863859
 MonoBehaviour:

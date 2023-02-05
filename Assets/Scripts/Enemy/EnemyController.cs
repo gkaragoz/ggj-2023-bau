@@ -21,7 +21,7 @@ namespace Enemy
         [SerializeField] private Vector2 speedInterval;
         [SerializeField] private float damageAmount;
         [SerializeField] private float attackCooldown;
-        [SerializeField] private int hitLimit;
+        [SerializeField] private int health;
         [SerializeField] private int reward;
         
         private Transform _current;
@@ -32,7 +32,7 @@ namespace Enemy
         private TakeHitAnimation _hitAnimation;
         private bool _canAttack = true;
         private YieldInstruction _attackCooldown;
-        private int _health;
+        private float _health;
         private bool _isAttackable = true;
 
         public int Reward => reward;
@@ -51,7 +51,7 @@ namespace Enemy
             _agent.updateUpAxis = false;
             _agent.speed = Random.Range(speedInterval.x, speedInterval.y);
             _agent.acceleration = _agent.speed * 3;
-            _health = hitLimit;
+            _health = health;
             var speedAlpha = _agent.speed / speedInterval.y;
             transform.localScale = Vector3.one * Mathf.Lerp(1.6F, 1F, speedAlpha);
             _attackCooldown = new WaitForSeconds(Random.Range(attackCooldown / 2F, attackCooldown));
@@ -107,15 +107,15 @@ namespace Enemy
         {
             if (_health == 0) return;
             if (_isAttackable == false) return;
-            
-            _health--;
-            _health = _health < 0 ? 0 : _health;
+
+            var damage = Random.Range(15, 25);
+            _health = Mathf.Clamp(_health - damage, 0F, health);
             CurrentState = EnemyState.GetHit;
 
             _isAttackable = false;
             _attackAnimation.Clear(true);
             AudioManager.Instance.Play($"Hit Type{Random.Range(1, 4)}");
-            _hitAnimation.TakeHit(1, hitPoint, () =>
+            _hitAnimation.TakeHit(damage, hitPoint, () =>
             {
                 _isAttackable = _health != 0;;
                 CurrentState = EnemyState.Walk;
