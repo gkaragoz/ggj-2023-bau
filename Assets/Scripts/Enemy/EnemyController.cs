@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Animations;
 using Gameplay;
@@ -13,7 +14,8 @@ namespace Enemy
         Walk,
         Attack,
         Death,
-        GetHit
+        GetHit,
+        Stop
     }
     
     public class EnemyController : MonoBehaviour
@@ -61,7 +63,7 @@ namespace Enemy
         {
             switch (CurrentState)
             {
-                case EnemyState.Death or EnemyState.Attack or EnemyState.GetHit:
+                case EnemyState.Death or EnemyState.Attack or EnemyState.GetHit or EnemyState.Stop:
                     break;
                 case EnemyState.Walk:
                 {
@@ -103,19 +105,19 @@ namespace Enemy
             _canAttack = true;
         }
 
-        public void TakeHit(Vector3 hitPoint)
+        public void TakeHit(Vector3 hitPoint, float damage = 0)
         {
             if (_health == 0) return;
             if (_isAttackable == false) return;
 
-            var damage = Random.Range(15, 25);
+            damage = damage == 0 ? Random.Range(15, 25) : damage;
             _health = Mathf.Clamp(_health - damage, 0F, health);
             CurrentState = EnemyState.GetHit;
 
             _isAttackable = false;
             _attackAnimation.Clear(true);
             AudioManager.Instance.Play($"Hit Type{Random.Range(1, 4)}");
-            _hitAnimation.TakeHit(damage, hitPoint, () =>
+            _hitAnimation.TakeHit((int)damage, hitPoint, () =>
             {
                 _isAttackable = _health != 0;;
                 CurrentState = EnemyState.Walk;
@@ -129,6 +131,21 @@ namespace Enemy
                 _dieAnimation.Die(Destroy);
                 CurrentState = EnemyState.Death;
             }
+        }
+
+        private void StopEnemy()
+        {
+            TakeHit(transform.position, health);
+        }
+        
+        private void OnEnable()
+        {
+            GameManager.OnComplete += StopEnemy;
+        }
+
+        private void OnDisable()
+        {
+            GameManager.OnComplete -= StopEnemy;
         }
     }
 }

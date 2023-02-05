@@ -39,6 +39,7 @@ namespace Main_Character
 
         public void Update()
         {
+            if(MainCharacterController.Instance.CurrentState == CharacterState.Death) return;
             var playerPosition = transform.position;
             var inputPosition = (Vector2)_characterCamera.ScreenToWorldPoint(Input.mousePosition);
             CurrentDirectionVector = (inputPosition - new Vector2(playerPosition.x, playerPosition.y)).normalized;

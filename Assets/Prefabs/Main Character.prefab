@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.9647059, g: 0.25882354, b: 0.25882354, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.84705883, b: 0.84705883, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -734,13 +734,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95947ae133e740f88116ef75e2bac54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1000
+  health: 100
   speed: 8
   dashSpeed: 15
   dashDistance: 0.3
   dashCooldown: 0.25
   rigidbody2d: {fileID: 771270897961618240}
-  characterSpriteSymmetry: {fileID: 771270897961618237}
   healthBar: {fileID: 5568739954313126471}
   weaponController: {fileID: 1443622373}
 --- !u!114 &8243471803111856289
@@ -773,6 +772,7 @@ MonoBehaviour:
   upSideDirection: {fileID: 21300000, guid: e5a77e744af5f3542975db90dafab2c2, type: 3}
   downDirection: {fileID: 21300000, guid: 63538b269cf4309419f204c0c92fde1a, type: 3}
   downSideDirection: {fileID: 21300000, guid: b3c1d848681414b4699049b6ed3d520f, type: 3}
+  deadSprite: {fileID: 21300000, guid: ad1eb45081f1c774489e56fec98118f5, type: 3}
 --- !u!114 &5568739954313126471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -789,6 +789,7 @@ MonoBehaviour:
   ParentRectTransform: {fileID: 2878982533789537986}
   HealthBarFillImage: {fileID: 1342899555}
   HealthBarDamageIndicatorImage: {fileID: 1114294721}
+  CanvasGroup: {fileID: 1077359904}
   ShakeStrength: 0.5
   ShakeDuration: 0.25
   DamageIndicatorDuration: 0.5
@@ -1070,6 +1071,7 @@ GameObject:
   - component: {fileID: 6928325877918754690}
   - component: {fileID: 2276227813121928788}
   - component: {fileID: 456829858194839914}
+  - component: {fileID: 1077359904}
   m_Layer: 5
   m_Name: UI Health Bar
   m_TagString: Untagged
@@ -1159,6 +1161,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &1077359904
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963923661791445434}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4296889984174455294
 GameObject:
   m_ObjectHideFlags: 0
@@ -6049,7 +6063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.23921569, g: 0.32941177, b: 0.050980393, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

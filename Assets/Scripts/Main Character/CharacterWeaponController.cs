@@ -6,7 +6,6 @@ using Enemy;
 using Gameplay;
 using UnityEngine;
 using UnityEngine.Rendering;
-using Random = UnityEngine.Random;
 
 namespace Main_Character
 {
@@ -61,6 +60,11 @@ namespace Main_Character
                 }
             }
         }
+        
+        private void OnCharacterDead()
+        {
+            transform.DOScale(Vector3.zero, .25F);
+        }
 
         public void SwingWeapon()
         {
@@ -75,15 +79,17 @@ namespace Main_Character
             IsSwingAnimationPlaying = false;
             OnCompleteAttackAnimation?.Invoke();
         }
-
+        
         private void OnEnable()
         {
             CharacterDirectionController.OnChangeDirection += UpdateWeaponChildSocket;
+            MainCharacterController.OnDeath += OnCharacterDead;
         }
-
+        
         private void OnDisable()
         {
             CharacterDirectionController.OnChangeDirection -= UpdateWeaponChildSocket;
+            MainCharacterController.OnDeath -= OnCharacterDead;
         }
     }
 }
